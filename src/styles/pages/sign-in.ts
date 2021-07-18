@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { flexCenter, rem, theme } from '../index';
 
-export const Container = styled.div`
+export const SignInContainer = styled.div`
   height: 100vh;
   flex-direction: column;
 

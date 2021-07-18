@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import Link from 'next/Link';
 
-import { Container } from '../../styles/pages/sign-in';
+import { SignInContainer } from '../../styles/pages/Sign-in';
 
 function SignIn() {
   return (
-    <Container>
+    <SignInContainer>
       <Head>
         <title>Login | AchaPet</title>
       </Head>
       <h1>Cadastro</h1>
       <Link href="/">Logar-se</Link>
-    </Container>
+    </SignInContainer>
   );
 }
 
