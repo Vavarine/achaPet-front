@@ -24,6 +24,8 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 100%;
         font: inherit;
         vertical-align: baseline;
+        box-sizing: border-box;
+        font-family: 'Roboto Slab', serif;
     }
     article, aside, details, figcaption, figure, 
     footer, header, hgroup, menu, nav, section {

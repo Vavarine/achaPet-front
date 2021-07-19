@@ -1,5 +1,10 @@
+import { ImageDescription } from "../../components/ImageDescription";
+
+
 export const LoginScreen = () => {
     return (
-        <div>Logisdasdasdsadnnn</div>
+        <>
+            <ImageDescription></ImageDescription>
+        </>
     )
 };

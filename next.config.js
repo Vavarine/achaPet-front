@@ -8,4 +8,5 @@ module.exports = {
       },
     ];
   },
+  optimizeFonts: false,
 }
