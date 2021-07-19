@@ -1,13 +1,20 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 function Login() {
   return (
     <>
       <Head>
-        <title>Login | AchaPet</title>
+        <title>AchaPet</title>
       </Head>
-      <h1>Login</h1>
-      <a href="/Login">Cadastrar-se</a>
+      <h1>LandingPage</h1>
+      <Link href="/login">
+        <a>Login</a>
+      </Link>
+      <br />
+      <Link href="/sign-in">
+        <a>Cadastrar-se</a>
+      </Link>
     </>
   );
 }
