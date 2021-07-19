@@ -4,6 +4,9 @@ function InstitutionalMenu() {
   return (
     <MenuContainer>
       <h1>AchaPet</h1>
+      <ul>
+        <li></li>
+      </ul>
     </MenuContainer>
   );
 }

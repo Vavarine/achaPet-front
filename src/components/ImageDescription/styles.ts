@@ -1,5 +1,9 @@
 import Image from "next/image";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
+=======
+import Link from "next/link";
+>>>>>>> institutional
 import styled from "styled-components";
 
 interface props {
@@ -43,7 +47,11 @@ export const MoreLink = styled(Link)`
   font-size: 1rem;
 `;
 
+<<<<<<< HEAD
 export const LogoImage = styled(Image)`
+=======
+export const LogoImage = styled.img`
+>>>>>>> institutional
   min-width: 250px !important;
   height: auto;
 `;
