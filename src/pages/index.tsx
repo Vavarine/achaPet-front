@@ -8,7 +8,7 @@ function Login() {
         <title>AchaPet</title>
       </Head>
       <h1>LandingPage</h1>
-      <Link href="/Login">
+      <Link href="/login">
         <a>Login</a>
       </Link>
       <br />
