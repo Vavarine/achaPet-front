@@ -13,15 +13,9 @@ export const ImageDescription = () => {
           <S.Descrition sizeFont="2.25rem" weightFont="400">
             Seja ele perdido ou para ser seu
           </S.Descrition>
-<<<<<<< HEAD
-          <S.MoreLink to="/login">Saiba mais sobre nós</S.MoreLink>
-        </div>
-        <S.LogoImage src={Logo} alt="logo acha pet" title="acha pet logo" />
-=======
           <S.MoreLink href="/login">Saiba mais sobre nós</S.MoreLink>
         </div>
         <S.LogoImage src="Logo.png" alt="logo acha pet" title="acha pet logo" />
->>>>>>> institutional
       </S.ContainerDescrition>
     </S.Container>
   );

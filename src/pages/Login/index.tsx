@@ -1,17 +1,11 @@
-import { ImageDescription } from "../../components/ImageDescription";
+import { ImageDescription } from '../../components/ImageDescription';
 
-<<<<<<< HEAD
-
-export const LoginScreen = () => {
-    return (
-        <>
-            <ImageDescription></ImageDescription>
-=======
-export default function LoginScreen() {
-    return (
-        <>
-            <ImageDescription />
->>>>>>> institutional
-        </>
-    )
+const LoginScreen = () => {
+  return (
+    <>
+      <ImageDescription />
+    </>
+  );
 };
+
+export default LoginScreen;
