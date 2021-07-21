@@ -1,11 +1,9 @@
 import { ImageDescription } from '../../components/ImageDescription';
 
-const LoginScreen = () => {
+export default function LoginScreen() {
   return (
     <>
       <ImageDescription />
     </>
   );
-};
-
-export default LoginScreen;
+}

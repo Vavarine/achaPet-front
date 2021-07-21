@@ -1,0 +1,31 @@
+{
+	"extends": ["plugin:prettier/recommended"],
+	"plugins": ["prettier"],
+	"rules": {
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "auto"
+			}
+		]
+	},
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module",
+		"allowImportExportEverywhere": true,
+		"ecmaFeatures": {
+			"modules": true
+		}
+	},
+	"env": {
+		"es6": true
+	},
+	"overrides": [
+		{
+			"files": ["*.ts", "*tsx"],
+			"parser": "@typescript-eslint/parser",
+			"plugins": ["@typescript-eslint"],
+			"extends": ["plugin:prettier/recommended"]
+		}
+	]
+}
