@@ -1,9 +1,9 @@
-import { ImageDescription } from "../../components/ImageDescription";
+import { ImageDescription } from '../../components/ImageDescription';
 
 export default function LoginScreen() {
-    return (
-        <>
-            <ImageDescription />
-        </>
-    )
-};
+  return (
+    <>
+      <ImageDescription />
+    </>
+  );
+}
