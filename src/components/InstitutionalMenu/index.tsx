@@ -1,12 +1,38 @@
-import { MenuContainer } from '../../styles/components/InstitucionalMenu';
+import React from 'react';
+import {
+  ListItem,
+  MenuContainer,
+} from '../../styles/components/InstitucionalMenu';
 
-function InstitutionalMenu() {
+interface MenuItem {
+  title: string;
+  slug: string;
+}
+interface InstitucionalMenuProps {
+  menuItems: MenuItem[];
+  selectedSlug: string;
+}
+
+function InstitutionalMenu({
+  menuItems,
+  selectedSlug,
+}: InstitucionalMenuProps) {
   return (
     <MenuContainer>
-      <h1>AchaPet</h1>
-      <ul>
-        <li></li>
-      </ul>
+      <div>
+        <h2>AchaPet</h2>
+        <ul>
+          {menuItems.map(menuItem => {
+            const { title, slug } = menuItem;
+
+            return (
+              <ListItem key={slug} selected={slug === selectedSlug}>
+                <a href={`/institutional/${slug}`}>{title}</a>
+              </ListItem>
+            );
+          })}
+        </ul>
+      </div>
     </MenuContainer>
   );
 }

@@ -1,5 +1,5 @@
-import * as S from "./styles";
-import Logo from "../../../public/Logo.png";
+import * as S from './styles';
+import Logo from '../../../public/Logo.png';
 
 export const ImageDescription = () => {
   return (

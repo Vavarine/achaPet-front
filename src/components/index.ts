@@ -1,2 +1,2 @@
-export * from './Title'
-export * from './ImageDescription'
+export * from './Title';
+export * from './ImageDescription';
