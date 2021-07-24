@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import InstitutionalMenu from '../../components/InstitutionalMenu';
-import contents from './contents';
+import contents from '../../messages/institutionalContents';
 
 import { InstitutionalContainer } from '../../styles/pages/Institutional';
 

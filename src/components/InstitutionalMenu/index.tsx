@@ -10,7 +10,7 @@ interface MenuItem {
 }
 interface InstitucionalMenuProps {
   menuItems: MenuItem[];
-  selectedSlug: string;
+  selectedSlug?: string;
 }
 
 function InstitutionalMenu({

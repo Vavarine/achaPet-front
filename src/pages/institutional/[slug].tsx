@@ -6,7 +6,7 @@ import { InstitutionalContainer } from '../../styles/pages/Institutional';
 import { InstitutionalContent } from '../../types';
 import Markdown from 'markdown-to-jsx';
 
-import contents from './contents';
+import contents from '../../messages/institutionalContents';
 
 interface InstitucionalProps {
   pageContent: InstitutionalContent;
