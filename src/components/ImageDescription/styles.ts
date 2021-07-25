@@ -1,7 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import styled from "styled-components";
-
+import Image from 'next/image';
+import Link from 'next/link';
+import styled from 'styled-components';
 interface props {
   sizeFont: string;
   weightFont: string;
@@ -33,8 +32,8 @@ export const ContainerDescrition = styled.div`
 
 export const Descrition = styled.p<props>`
   color: ${({ theme }) => theme.color.text};
-  font-weight: ${(props) => props.weightFont};
-  font-size: ${(props) => props.sizeFont};
+  font-weight: ${props => props.weightFont};
+  font-size: ${props => props.sizeFont};
   margin-bottom: 20px;
 `;
 

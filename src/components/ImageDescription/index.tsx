@@ -1,5 +1,4 @@
 import * as S from './styles';
-import Logo from '../../../public/Logo.png';
 
 export const ImageDescription = () => {
   return (
@@ -15,7 +14,11 @@ export const ImageDescription = () => {
           </S.Descrition>
           <S.MoreLink href="/login">Saiba mais sobre nós</S.MoreLink>
         </div>
-        <S.LogoImage src="Logo.png" alt="logo acha pet" title="acha pet logo" />
+        <S.LogoImage
+          src="/assets/Logo.png"
+          alt="logo acha pet"
+          title="acha pet logo"
+        />
       </S.ContainerDescrition>
     </S.Container>
   );
