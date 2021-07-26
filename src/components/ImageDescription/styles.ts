@@ -43,6 +43,6 @@ export const MoreLink = styled(Link)`
 `;
 
 export const LogoImage = styled.img`
-  min-width: 250px !important;
+  min-width: 270px !important;
   height: auto;
 `;

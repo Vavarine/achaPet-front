@@ -78,15 +78,16 @@ export const LoginWithEmailAndPass = styled.div`
   label {
     font-size: ${rem(16)};
     padding: 5px;
+    padding-bottom: ${rem(8)};
   }
 
   #email,
   #password {
     width: 100%;
     height: 42px;
-    padding: 5px 5px 5px 20px;
+    padding: 5px 5px 5px 15px;
     box-sizing: border-box;
-    border-radius: 8px;
+    border-radius: 3px;
     border: 1px solid ${({ theme }) => theme.color.text};
 
     margin-bottom: 25px;
