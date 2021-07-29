@@ -1,12 +1,18 @@
 import { ThemeProvider } from 'styled-components';
-import { theme, GlobalStyle } from '../styles/index';
 import type { AppProps } from 'next/app';
+import { Toaster } from 'react-hot-toast';
+
+import { theme, GlobalStyle } from '../styles/index';
+import AuthContextProvider from '../contexts/authContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-      <GlobalStyle />
+      <AuthContextProvider>
+        <Component {...pageProps} />
+        <GlobalStyle />
+        <Toaster />
+      </AuthContextProvider>
     </ThemeProvider>
   );
 }

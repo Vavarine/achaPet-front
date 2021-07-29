@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import GoogleLogin from '../../Api';
+import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/router';
+
+import useAuth from '../../hooks/useAuth';
+
 import * as S from './styles';
 
 const LoginForm = () => {
@@ -12,25 +16,52 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { signInWithGoogle, signIn } = useAuth();
+  const { rememberMe, setRememberMe } = useAuth();
 
-  const loginWithGoogle = async () => {
-    const result = await GoogleLogin();
+  const router = useRouter();
 
-    if (result) {
-      console.log('result :>> ', result.user);
-    } else {
-      console.log('deu erro');
+  async function hanldeLoginWithGoogle() {
+    try {
+      await signInWithGoogle();
+      toast('Bem vindo!', { icon: '🐶' });
+
+      router.push('/home');
+    } catch (error) {
+      toast.error('erro ao logar com o google');
     }
-  };
+  }
 
-  const onsubmit = data => console.log('data :>> ', data);
+  async function onsubmit(data) {
+    const { email, password } = data;
+
+    toast.promise(
+      signIn(email, password),
+      {
+        loading: 'Um segundo...',
+        success: data => {
+          router.push('/home');
+          return `Bem vindo!`;
+        },
+        error: err => `Não foi possivel logar`,
+      },
+      {
+        success: {
+          icon: '🐶',
+        },
+        error: {
+          icon: '😓',
+        },
+      },
+    );
+  }
 
   return (
     <S.ContainerLogin>
       <form onSubmit={handleSubmit(onsubmit)}>
         <S.Title>Entrar</S.Title>
 
-        <S.LoginWithGoogle onClick={loginWithGoogle}>
+        <S.LoginWithGoogle onClick={hanldeLoginWithGoogle}>
           <FcGoogle size={30} />
           Entra com google
         </S.LoginWithGoogle>
@@ -60,7 +91,13 @@ const LoginForm = () => {
 
           <S.RememberMeAndResetPassword>
             <div>
-              <input type="checkbox" name="remember" id="remember" />
+              <input
+                type="checkbox"
+                name="remember"
+                id="remember"
+                checked={rememberMe}
+                onChange={e => setRememberMe(e.target.checked)}
+              />
               <label htmlFor="remember">Lembrar de mim</label>
             </div>
             <div>

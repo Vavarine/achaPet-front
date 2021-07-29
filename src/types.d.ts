@@ -3,3 +3,8 @@ export interface InstitutionalContent {
   title: string;
   text: string;
 }
+
+export interface User {
+  name: string;
+  email: string;
+}

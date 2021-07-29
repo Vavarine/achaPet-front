@@ -1,22 +1,22 @@
-import firebase from 'firebase/app';
-import 'firebase/firebase-auth';
-import 'firebase/firebase-firestore';
+// import firebase from 'firebase/app';
+// import 'firebase/firebase-auth';
+// import 'firebase/firebase-firestore';
 
-import firebaseConfig from './firebaseConfig';
+// import firebaseConfig from './firebaseConfig';
 
-let firebaseApp: any;
+// let firebaseApp: any;
 
-if (!firebase.apps.length) {
-  firebaseApp = firebase && firebase.initializeApp(firebaseConfig);
-  const db = firebaseApp.firestore();
-}
+// if (!firebase.apps.length) {
+//   firebaseApp = firebase && firebase.initializeApp(firebaseConfig);
+//   const db = firebaseApp.firestore();
+// }
 
-const GoogleLogin = async () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
+// const GoogleLogin = async () => {
+//   const provider = new firebase.auth.GoogleAuthProvider();
 
-  let result = await firebase.auth().signInWithPopup(provider);
+//   let result = await firebase.auth().signInWithPopup(provider);
 
-  return result;
-};
+//   return result;
+// };
 
-export default GoogleLogin;
+// export default GoogleLogin;
