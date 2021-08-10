@@ -79,7 +79,7 @@ const LoginForm = () => {
       <S.DontHaveAccount>
         <span>
           Não tem uma conta?
-          <a href="#">Cadastre-se</a>
+          <a href="#"> Cadastre-se</a>
         </span>
       </S.DontHaveAccount>
     </S.ContainerLogin>

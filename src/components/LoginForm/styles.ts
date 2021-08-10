@@ -13,6 +13,15 @@ export const ContainerLogin = styled.div`
   height: 100vh;
 
   background: ${({ theme }) => theme.color.background};
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 40px;
+
+    form {
+      width: 100%;
+    }
+  }
 `;
 
 export const Title = styled.h3`
@@ -49,6 +58,10 @@ export const LoginWithGoogle = styled.button`
   &:hover {
     background: #fff;
     box-shadow: 0px 1px 24px 0px rgb(0 0 0 / 42%);
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 100%;
   }
 `;
 
