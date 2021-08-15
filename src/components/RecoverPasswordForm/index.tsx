@@ -1,12 +1,9 @@
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { AiOutlineArrowRight } from 'react-icons/ai';
-import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-hot-toast';
-import { useRouter } from 'next/router';
-
+import { AiOutlineArrowRight } from 'react-icons/ai';
 import useAuth from '../../hooks/useAuth';
-
 import * as S from './styles';
 
 const LoginForm = () => {
@@ -17,7 +14,7 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm();
   const { signInWithGoogle, signIn } = useAuth();
-  const { rememberMe, setRememberMe } = useAuth();
+  //   const { acceptTerms, setAcceptTerms } = useState(false);
 
   const router = useRouter();
 
@@ -71,16 +68,7 @@ const LoginForm = () => {
   return (
     <S.ContainerLogin>
       <form onSubmit={handleSubmit(onsubmit)}>
-        <S.Title>Entrar</S.Title>
-
-        <S.LoginWithGoogle onClick={hanldeLoginWithGoogle}>
-          <FcGoogle size={30} />
-          Entra com google
-        </S.LoginWithGoogle>
-
-        <S.lineOr>
-          <span>ou</span>
-        </S.lineOr>
+        <S.Title>Recuperar senha</S.Title>
 
         <S.LoginWithEmailAndPass>
           <label htmlFor="email" {...register('email')}>
@@ -95,46 +83,32 @@ const LoginForm = () => {
               console.log('e :>> ', validateEmail(e.target));
             }}
           ></input>
-          <span className="errorMessage">Preecha o campo corretamente</span>
+          <span className="errorMessage">Esse não é um email valido</span>
 
-          <label htmlFor="password">Senha</label>
-          <input
-            name="email"
-            type="password"
-            id="password"
-            {...register('password')}
-          ></input>
-
-          <S.RememberMeAndResetPassword>
-            <div>
-              <input
-                type="checkbox"
-                name="remember"
-                id="remember"
-                checked={rememberMe}
-                onChange={e => setRememberMe(e.target.checked)}
-              />
-              <label htmlFor="remember">Lembrar de mim</label>
-            </div>
-            <div>
-              <a href="">Esqueci minha senha</a>
-            </div>
-          </S.RememberMeAndResetPassword>
           <S.SubmitButton>
-            <button type="submit">
-              Entrar
-              <AiOutlineArrowRight size={20} />
-            </button>
+            <button type="submit">Enviar</button>
           </S.SubmitButton>
+
+          <S.sucessMessage>
+            Te enviaremos um email com sua senha!
+          </S.sucessMessage>
         </S.LoginWithEmailAndPass>
       </form>
 
-      <S.DontHaveAccount>
-        <span>
-          Não tem uma conta?&nbsp;
-          <a href="/sign-in">Cadastre-se</a>
-        </span>
-      </S.DontHaveAccount>
+      <S.Links>
+        <S.IHaveAccount>
+          <span>
+            Já tem uma conta?&nbsp;
+            <a href="/sign-in">Entrar</a>
+          </span>
+        </S.IHaveAccount>
+        <S.DontHaveAccount>
+          <span>
+            Não tem uma conta?&nbsp;
+            <a href="/sign-in">Cadastre-se</a>
+          </span>
+        </S.DontHaveAccount>
+      </S.Links>
     </S.ContainerLogin>
   );
 };

@@ -1,12 +1,9 @@
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { AiOutlineArrowRight } from 'react-icons/ai';
-import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-hot-toast';
-import { useRouter } from 'next/router';
-
+import { AiOutlineArrowRight } from 'react-icons/ai';
 import useAuth from '../../hooks/useAuth';
-
 import * as S from './styles';
 
 const LoginForm = () => {
@@ -17,7 +14,7 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm();
   const { signInWithGoogle, signIn } = useAuth();
-  const { rememberMe, setRememberMe } = useAuth();
+  //   const { acceptTerms, setAcceptTerms } = useState(false);
 
   const router = useRouter();
 
@@ -56,6 +53,15 @@ const LoginForm = () => {
     );
   }
 
+  function validateName(name: HTMLInputElement) {
+    var re = /\d+/g;
+
+    var res = re.test(String(name.value).toLowerCase());
+    if (res) {
+      return (name.value = name.value.slice(0, -1));
+    }
+  }
+
   function validateEmail(email: HTMLInputElement) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -71,18 +77,22 @@ const LoginForm = () => {
   return (
     <S.ContainerLogin>
       <form onSubmit={handleSubmit(onsubmit)}>
-        <S.Title>Entrar</S.Title>
-
-        <S.LoginWithGoogle onClick={hanldeLoginWithGoogle}>
-          <FcGoogle size={30} />
-          Entra com google
-        </S.LoginWithGoogle>
-
-        <S.lineOr>
-          <span>ou</span>
-        </S.lineOr>
+        <S.Title>Cadastrar-se</S.Title>
 
         <S.LoginWithEmailAndPass>
+          <label htmlFor="name" {...register('name')}>
+            Nome
+          </label>
+          <input
+            name="name"
+            type="name"
+            id="name"
+            {...register('name')}
+            onChange={e => {
+              console.log('e :>> ', validateName(e.target));
+            }}
+          ></input>
+
           <label htmlFor="email" {...register('email')}>
             E-mail
           </label>
@@ -105,36 +115,34 @@ const LoginForm = () => {
             {...register('password')}
           ></input>
 
-          <S.RememberMeAndResetPassword>
+          <S.AcceptTerms>
             <div>
               <input
                 type="checkbox"
-                name="remember"
-                id="remember"
-                checked={rememberMe}
-                onChange={e => setRememberMe(e.target.checked)}
+                name="acceptTerms"
+                id="acceptTerms"
+                // checked={!!acceptTerms}
+                // onChange={e => setAcceptTerms(!!e.target.checked)}
               />
-              <label htmlFor="remember">Lembrar de mim</label>
+              <label htmlFor="acceptTerms">Aceito os</label>
             </div>
             <div>
-              <a href="">Esqueci minha senha</a>
+              <a href="">Termos e condições</a>
             </div>
-          </S.RememberMeAndResetPassword>
+          </S.AcceptTerms>
+
           <S.SubmitButton>
-            <button type="submit">
-              Entrar
-              <AiOutlineArrowRight size={20} />
-            </button>
+            <button type="submit">Cadastrar</button>
           </S.SubmitButton>
         </S.LoginWithEmailAndPass>
       </form>
 
-      <S.DontHaveAccount>
+      <S.IHaveAccount>
         <span>
-          Não tem uma conta?&nbsp;
-          <a href="/sign-in">Cadastre-se</a>
+          Já tem uma conta?&nbsp;
+          <a href="/sign-in">Entrar</a>
         </span>
-      </S.DontHaveAccount>
+      </S.IHaveAccount>
     </S.ContainerLogin>
   );
 };

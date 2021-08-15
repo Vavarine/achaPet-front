@@ -124,7 +124,7 @@ export default function AuthContextProvider({
 
     toast('Até mais...', { icon: '😢' });
 
-    router.push('/login');
+    router.push('/Login');
   }
 
   return (
