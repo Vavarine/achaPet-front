@@ -2,12 +2,14 @@ export const theme = {
   color: {
     background: '#F5F5F5',
     text: '#323232',
+    link: '#131313',
     red: '#C83A3A',
     blue_100: '#51D3F5',
     blue_200: '#ACD9E6',
     blue_300: '#C7EBF5',
     blue_500: '#4093A8',
     blue_darker: '#367383',
+    text_description: '#9F9F9F',
   },
 
   font: {
@@ -68,6 +70,13 @@ export function customScrollbar() {
     border-radius: 0px;
     box-shadow: inset 7px 10px 12px #f0f0f0;
   }`;
+}
+
+export function containerCenter() {
+  return `
+    width: 100%;
+    max-width: 1200px;
+    margin: 0px auto`;
 }
 
 export { GlobalStyle } from './globalStyle';
