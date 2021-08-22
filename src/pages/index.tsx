@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import LandingPage from './LandingPage';
+import LandingPage from './landing';
 
 function Login() {
   return <LandingPage />;
