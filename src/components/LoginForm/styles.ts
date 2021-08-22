@@ -20,8 +20,6 @@ export const ContainerLogin = styled.div`
 
     form {
       width: 100%;
-      max-width: 500px;
-      margin: 0 auto;
     }
   }
 `;
@@ -64,7 +62,6 @@ export const LoginWithGoogle = styled.button`
 
   @media (max-width: 1024px) {
     max-width: 100%;
-    width: 100%;
   }
 `;
 
