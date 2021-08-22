@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { SignInContainer } from '../../styles/pages/sign-in';
+import { SignInContainer } from '../../styles/pages/SignIn';
 
 function SignIn() {
   return (

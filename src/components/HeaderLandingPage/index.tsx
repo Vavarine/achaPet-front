@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import * as S from './styles';
 
 export const Header = () => {
@@ -10,7 +11,9 @@ export const Header = () => {
       <S.LinksNavigation>
         <a href="#">Adoção</a>
         <a href="#">Depoimentos</a>
-        <a href="#">Começar</a>
+        <Link href="/login">
+          <a>Começar</a>
+        </Link>
       </S.LinksNavigation>
     </S.ContainerHeader>
   );
