@@ -1,13 +1,14 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
+import isEmail from 'validator/lib/isEmail';
 
 import useAuth from '../../hooks/useAuth';
 
 import * as S from './styles';
+import Link from 'next/link';
 
 const LoginForm = () => {
   const {
@@ -16,7 +17,7 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { signInWithGoogle, signIn } = useAuth();
+  const { signInWithGoogle, login: signIn } = useAuth();
   const { rememberMe, setRememberMe } = useAuth();
 
   const router = useRouter();
@@ -57,10 +58,8 @@ const LoginForm = () => {
   }
 
   function validateEmail(email: HTMLInputElement) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const res = isEmail(email.value);
 
-    var res = re.test(String(email.value).toLowerCase());
-    console.log('res :>> ', res);
     if (!res) {
       email.classList.add('error');
     } else {
@@ -132,7 +131,9 @@ const LoginForm = () => {
       <S.DontHaveAccount>
         <span>
           Não tem uma conta?
-          <a href="#"> Cadastre-se</a>
+          <Link href="/sign-in">
+            <a>Cadastre-se</a>
+          </Link>
         </span>
       </S.DontHaveAccount>
     </S.ContainerLogin>

@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { AiOutlineArrowRight } from 'react-icons/ai';
 import useAuth from '../../hooks/useAuth';
+import isEmail from 'validator/lib/isEmail';
+
 import * as S from './styles';
 
 const LoginForm = () => {
@@ -13,7 +13,7 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { signInWithGoogle, signIn } = useAuth();
+  const { signInWithGoogle, login: signIn } = useAuth();
   //   const { acceptTerms, setAcceptTerms } = useState(false);
 
   const router = useRouter();
@@ -54,11 +54,7 @@ const LoginForm = () => {
   }
 
   function validateEmail(email: HTMLInputElement) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    var res = re.test(String(email.value).toLowerCase());
-    console.log('res :>> ', res);
-    if (!res) {
+    if (!isEmail(email.value)) {
       email.classList.add('error');
     } else {
       email.classList.remove('error');

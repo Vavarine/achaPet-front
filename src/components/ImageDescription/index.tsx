@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Doggo from '../../assets/doggo.svg';
 import * as S from './styles';
 
 export const ImageDescription = () => {
@@ -7,7 +8,7 @@ export const ImageDescription = () => {
       <S.Wrapper>
         <S.Title>AchaPet</S.Title>
         <S.ContainerDescrition>
-          <div>
+          <S.DescriptionWrapper>
             <S.DescritionTitle>
               Tornamos a procura do seu pet mais simples.
             </S.DescritionTitle>
@@ -15,12 +16,10 @@ export const ImageDescription = () => {
             <Link href="/login">
               <S.MoreLink>Saiba mais sobre nós</S.MoreLink>
             </Link>
-          </div>
-          <S.LogoImage
-            src="/assets/Logo.png"
-            alt="logo acha pet"
-            title="acha pet logo"
-          />
+          </S.DescriptionWrapper>
+          <S.LogoSVGContainer>
+            <Doggo />
+          </S.LogoSVGContainer>
         </S.ContainerDescrition>
       </S.Wrapper>
     </S.Container>

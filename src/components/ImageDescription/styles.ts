@@ -48,10 +48,6 @@ export const Title = styled.h1`
 
 export const ContainerDescrition = styled.div`
   display: flex;
-
-  > div {
-    flex: 1;
-  }
 `;
 
 export const DescritionTitle = styled.p`
@@ -63,6 +59,10 @@ export const DescritionTitle = styled.p`
   @media (max-width: 1024px) {
     font-size: ${rem(18)};
   }
+`;
+
+export const DescriptionWrapper = styled.div`
+  flex: 1;
 `;
 
 export const Descrition = styled.p`
@@ -86,10 +86,8 @@ export const MoreLink = styled.a`
   }
 `;
 
-export const LogoImage = styled.img`
-  height: 250px;
-  width: 250px;
-  opacity: 0.82;
+export const LogoSVGContainer = styled.div`
+  flex: 0;
 
   @media (max-width: 1024px) {
     display: none;

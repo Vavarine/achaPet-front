@@ -18,7 +18,7 @@ interface AuthContextType {
   user: User;
   rememberMe: boolean;
   setRememberMe: Dispatch<SetStateAction<boolean>>;
-  signIn: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
 }
@@ -89,7 +89,7 @@ export default function AuthContextProvider({
     throw new Error('User not authenticated');
   }
 
-  async function signIn(email: string, password: string) {
+  async function login(email: string, password: string) {
     const { data } = await api.post('/users/authenticate', {
       email,
       senha: password,
@@ -132,7 +132,7 @@ export default function AuthContextProvider({
       value={{
         user,
         signInWithGoogle,
-        signIn,
+        login,
         signOut,
         rememberMe,
         setRememberMe,

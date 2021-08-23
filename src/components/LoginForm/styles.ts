@@ -182,6 +182,7 @@ export const DontHaveAccount = styled.div`
   }
 
   a {
+    padding-left: 5px;
     color: ${({ theme }) => theme.color.blue_500};
   }
 `;
