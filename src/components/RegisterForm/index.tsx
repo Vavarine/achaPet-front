@@ -13,8 +13,6 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { signInWithGoogle, login } = useAuth();
-
   const router = useRouter();
 
   async function onsubmit(data) {
@@ -89,9 +87,6 @@ const LoginForm = () => {
             type="name"
             id="name"
             {...register('name')}
-            onChange={e => {
-              console.log('e :>> ', validateName(e.target));
-            }}
           ></input>
 
           <label htmlFor="email" {...register('email')}>
