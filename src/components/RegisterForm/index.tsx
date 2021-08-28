@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
@@ -135,7 +136,9 @@ const LoginForm = () => {
       <S.IHaveAccount>
         <span>
           Já tem uma conta?&nbsp;
-          <a href="/sign-in">Entrar</a>
+          <Link href="/login">
+            <a>Entrar</a>
+          </Link>
         </span>
       </S.IHaveAccount>
     </S.ContainerLogin>

@@ -12,6 +12,7 @@
     "@unform/core": "^2.1.6",
     "@unform/web": "^2.1.6",
     "axios": "^0.21.1",
+    "chalk": "^4.1.2",
     "date-fns": "^2.22.1",
     "firebase": "^8.8.0",
     "markdown-to-jsx": "^7.1.3",
