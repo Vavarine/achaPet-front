@@ -12,6 +12,10 @@ export const ContainerHeader = styled.header`
   max-width: 1200px;
 
   margin: 0px auto 0;
+
+  position: absolute;
+  top: 20px;
+  left: 0;
 `;
 
 export const LinkHome = styled.a`
