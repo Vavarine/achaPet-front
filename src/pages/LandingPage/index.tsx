@@ -1,4 +1,4 @@
-import { Header, WhatPeopleSayCard } from '../../components';
+import { Header, WhatPeopleSayCard, MadeByCard } from '../../components';
 import * as S from '../../styles/pages/landingPage';
 
 export default function LandingPage() {
@@ -75,6 +75,60 @@ export default function LandingPage() {
             ></WhatPeopleSayCard>
           </S.WhatPeopleSayWrapper>
         </S.WhatPeopleSay>
+        <S.MadeBy>
+          <h2>
+            Feito com <span>❤</span> por
+          </h2>
+
+          <S.MadeByWrapper>
+            <MadeByCard
+              name="Amanda"
+              photo="/assets/photo-itau.png"
+              networks={{
+                linkedin: 'teste',
+                github: 'teste',
+                instagram: 'teste',
+              }}
+            ></MadeByCard>
+            <MadeByCard
+              name="Eduardo"
+              photo="/assets/photo-du.png"
+              networks={{
+                linkedin: 'teste',
+                github: 'teste',
+                instagram: 'teste',
+              }}
+            ></MadeByCard>
+            <MadeByCard
+              name="Evailson"
+              photo="/assets/photo-eva.png"
+              networks={{
+                linkedin: 'teste',
+                github: 'teste',
+                instagram: 'teste',
+              }}
+            ></MadeByCard>
+            <MadeByCard
+              name="Karina"
+              photo="/assets/photo-ana-paula.png"
+              networks={{
+                linkedin: 'teste',
+                github: 'teste',
+                instagram: 'teste',
+              }}
+            ></MadeByCard>
+
+            <MadeByCard
+              name="Lindomar"
+              photo="/assets/photo-sid.jpg"
+              networks={{
+                linkedin: 'teste',
+                github: 'teste',
+                instagram: 'teste',
+              }}
+            ></MadeByCard>
+          </S.MadeByWrapper>
+        </S.MadeBy>
       </main>
     </S.Container>
   );

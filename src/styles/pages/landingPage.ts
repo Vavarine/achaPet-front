@@ -109,13 +109,12 @@ export const AdoptContainer = styled.section`
   ${flexCenter()};
   justify-content: space-between;
 
-  background: ${theme.color.background};
-
   padding: 50px 70px;
 
   background: url('/assets/line.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  background-color: ${theme.color.background};
 
   h2 {
     font-size: ${rem(48)};
@@ -170,7 +169,7 @@ export const WhatPeopleSay = styled.section`
 
   h2 {
     font-size: ${rem(32)};
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 
     strong {
       font-weight: bold;
@@ -180,4 +179,30 @@ export const WhatPeopleSay = styled.section`
 
 export const WhatPeopleSayWrapper = styled.div`
   ${flexCenter()};
+  justify-content: space-between;
+
+  width: 100%;
+`;
+
+export const MadeBy = styled.section`
+  background: ${theme.color.background};
+  ${flexCenter()};
+  flex-direction: column;
+
+  padding: 40px 0;
+
+  h2 {
+    font-size: ${rem(32)};
+    margin-bottom: 30px;
+
+    span {
+      color: red;
+    }
+  }
+`;
+export const MadeByWrapper = styled.div`
+  width: 100%;
+
+  ${flexCenter()};
+  flex-wrap: wrap;
 `;
