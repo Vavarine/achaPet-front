@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import styled from 'styled-components';
 
-import { rem, theme } from '../index';
+import { rem, theme } from '../../styles/index';
 
 interface ListItemProps {
   selected: boolean;

@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  ListItem,
-  MenuContainer,
-} from '../../styles/components/InstitucionalMenu';
+import * as S from './InstitucionalMenu';
 
 interface MenuItem {
   title: string;
@@ -18,7 +15,7 @@ function InstitutionalMenu({
   selectedSlug,
 }: InstitucionalMenuProps) {
   return (
-    <MenuContainer>
+    <S.MenuContainer>
       <div>
         <h2>AchaPet</h2>
         <ul>
@@ -26,14 +23,14 @@ function InstitutionalMenu({
             const { title, slug } = menuItem;
 
             return (
-              <ListItem key={slug} selected={slug === selectedSlug}>
+              <S.ListItem key={slug} selected={slug === selectedSlug}>
                 <a href={`/institutional/${slug}`}>{title}</a>
-              </ListItem>
+              </S.ListItem>
             );
           })}
         </ul>
       </div>
-    </MenuContainer>
+    </S.MenuContainer>
   );
 }
 

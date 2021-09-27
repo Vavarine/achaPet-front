@@ -1,13 +1,13 @@
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-export const Map = () => {
+const Map = () => {
   return (
     <MapContainer
       center={[51.505, -0.09]}
       zoom={13}
       scrollWheelZoom={false}
-      style={{ height: 400, width: '100%' }}
+      style={{ height: '100%', width: '100%' }}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -21,3 +21,5 @@ export const Map = () => {
     </MapContainer>
   );
 };
+
+export default Map;
