@@ -6,7 +6,7 @@ export default function getApiClient(ctx?: any) {
 
   const api = axios.create({
     // baseURL: 'https://achapet.herokuapp.com',
-    baseURL: 'http://localhost:3030',
+    baseURL: 'https://achapet-backend.herokuapp.com',
   });
 
   api.interceptors.request.use(config => {

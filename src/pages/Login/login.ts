@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { flexCenter, rem, theme } from '../index';
+import { flexCenter, rem, theme } from '../../styles/index';
 
 export const LoginContainer = styled.div`
   height: 100vh;

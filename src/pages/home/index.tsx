@@ -1,24 +1,31 @@
 import { GetServerSideProps } from 'next';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { parseCookies } from 'nookies';
-import useAuth from '../../hooks/useAuth';
 import { User } from '../../types';
 
+import 'leaflet/dist/leaflet.css';
+
+import { HomeContainer } from '../../styles/pages/home';
+import { AsideMenu } from '../../components/AsideMenu';
+
+const Map = dynamic(() => import('../../components/Map'), { ssr: false });
 interface HomeProps {
   user: User;
 }
 
 function Login({ user }: HomeProps) {
-  const { signOut } = useAuth();
-
   return (
     <div>
       <Head>
         <title>AchaPet</title>
       </Head>
-      <h1>Home</h1>
-      <p>Olá {user.name}</p>
-      <button onClick={signOut}>Deslogar</button>
+      <HomeContainer>
+        <AsideMenu user={user} />
+        <div>
+          <Map />
+        </div>
+      </HomeContainer>
     </div>
   );
 }

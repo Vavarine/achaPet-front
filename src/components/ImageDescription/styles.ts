@@ -24,7 +24,7 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 700px;
+  /* max-width: 700px; */
   padding: 50px;
   display: flex;
   flex-direction: column;

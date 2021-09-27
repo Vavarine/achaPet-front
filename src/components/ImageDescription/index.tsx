@@ -11,7 +11,7 @@ export const ImageDescription = () => {
               Tornamos a procura do seu pet mais simples.
             </S.DescritionTitle>
             <S.Descrition>Seja ele perdido ou para ser seu</S.Descrition>
-            <S.MoreLink href="/Login">Saiba mais sobre nós</S.MoreLink>
+            <S.MoreLink href="/login">Saiba mais sobre nós</S.MoreLink>
           </div>
           <S.LogoImage
             src="/assets/Logo.png"
