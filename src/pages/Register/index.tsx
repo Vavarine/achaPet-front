@@ -3,7 +3,7 @@ import { parseCookies } from 'nookies';
 import { ImageDescription } from '../../components/ImageDescription';
 import RegisterForm from '../../components/RegisterForm';
 
-import * as S from '../Login/login';
+import * as S from '../Login/styles';
 
 export default function LoginScreen() {
   return (

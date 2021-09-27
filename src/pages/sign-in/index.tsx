@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { SignInContainer } from '../../styles/pages/sign-in';
+import * as S from './styles';
 
 function SignIn() {
   return (
-    <SignInContainer>
+    <S.SignInContainer>
       <Head>
         <title>Login | AchaPet</title>
       </Head>
@@ -13,7 +13,7 @@ function SignIn() {
       <Link href="/">
         <a>Logar-se</a>
       </Link>
-    </SignInContainer>
+    </S.SignInContainer>
   );
 }
 

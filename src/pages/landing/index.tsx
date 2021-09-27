@@ -1,5 +1,5 @@
 import { Header, WhatPeopleSayCard, MadeByCard } from '../../components';
-import * as S from '../../styles/pages/landingPage';
+import * as S from './styles';
 
 export default function LandingPage() {
   return (

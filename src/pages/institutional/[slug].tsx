@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import InstitutionalMenu from '../../components/InstitutionalMenu';
-import { InstitutionalContainer } from '../../styles/pages/Institutional';
+import { InstitutionalContainer } from './styles';
 import { InstitutionalContent } from '../../types';
 import Markdown from 'markdown-to-jsx';
 

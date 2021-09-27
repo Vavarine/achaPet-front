@@ -6,8 +6,9 @@ import { User } from '../../types';
 
 import 'leaflet/dist/leaflet.css';
 
-import { HomeContainer } from '../../styles/pages/home';
+import * as S from './styles';
 import { AsideMenu } from '../../components/AsideMenu';
+import { CartPet } from '../../components';
 
 const Map = dynamic(() => import('../../components/Map'), { ssr: false });
 interface HomeProps {
@@ -20,12 +21,12 @@ function Login({ user }: HomeProps) {
       <Head>
         <title>AchaPet</title>
       </Head>
-      <HomeContainer>
+      <S.HomeContainer>
         <AsideMenu user={user} />
         <div>
           <Map />
         </div>
-      </HomeContainer>
+      </S.HomeContainer>
     </div>
   );
 }

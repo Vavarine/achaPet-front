@@ -3,16 +3,16 @@ import Head from 'next/head';
 import InstitutionalMenu from '../../components/InstitutionalMenu';
 import contents from '../../messages/institutionalContents';
 
-import { InstitutionalContainer } from '../../styles/pages/Institutional';
+import * as S from './styles';
 
 function Institutional() {
   return (
-    <InstitutionalContainer>
+    <S.InstitutionalContainer>
       <Head>
         <title>Institutional | AchaPet</title>
       </Head>
       <InstitutionalMenu menuItems={contents} />
-    </InstitutionalContainer>
+    </S.InstitutionalContainer>
   );
 }
 
