@@ -1,7 +1,18 @@
-import { Header, WhatPeopleSayCard, MadeByCard } from '../../components';
+import React, { useEffect, useState } from 'react';
+import { Header, MadeByCard, WhatPeopleSayCard } from '../../components/index';
+// import { Header } from '../../components';
 import * as S from './styles';
 
-export default function LandingPage() {
+const LandingPage = () => {
+  const [isBrowser, setIsBrowser] = useState(false);
+  useEffect(() => {
+    setIsBrowser(true);
+  }, []);
+
+  if (!isBrowser) {
+    return null;
+  }
+
   return (
     <S.Container>
       <Header />
@@ -132,4 +143,6 @@ export default function LandingPage() {
       </main>
     </S.Container>
   );
-}
+};
+
+export default LandingPage;

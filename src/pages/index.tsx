@@ -1,10 +1,5 @@
-import { GetServerSideProps } from 'next';
-import Head from 'next/head';
-import Link from 'next/link';
-import LandingPage from './landing';
-
 function Login() {
-  return <LandingPage />;
+  return <div></div>;
 }
 
 // export const getServerSideProps: GetServerSideProps = async ctx => {

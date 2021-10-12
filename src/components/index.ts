@@ -5,7 +5,6 @@ export * from './InputForm';
 export * from './InstitutionalMenu';
 export * from './LoginForm';
 export * from './MadeByCard';
-export * from './Map';
 export * from './RecoverPasswordForm';
 export * from './RegisterForm';
 export * from './Title';

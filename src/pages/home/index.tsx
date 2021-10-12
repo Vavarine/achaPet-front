@@ -4,13 +4,11 @@ import Head from 'next/head';
 import { parseCookies } from 'nookies';
 import { User } from '../../types';
 
-import 'leaflet/dist/leaflet.css';
+const Map = dynamic(() => import('../../components/Map'), { ssr: false });
 
 import * as S from './styles';
 import { AsideMenu } from '../../components/AsideMenu';
-import { CartPet } from '../../components';
 
-const Map = dynamic(() => import('../../components/Map'), { ssr: false });
 interface HomeProps {
   user: User;
 }
@@ -21,15 +19,20 @@ function Login({ user }: HomeProps) {
       <Head>
         <title>AchaPet</title>
       </Head>
-      <S.HomeContainer>
-        <AsideMenu user={user} />
-        <div>
-          <Map />
-        </div>
-      </S.HomeContainer>
     </div>
   );
 }
+
+export const Home = ({ user }: HomeProps) => {
+  return (
+    <S.HomeContainer>
+      <AsideMenu user={user} />
+      <div>
+        <Map />
+      </div>
+    </S.HomeContainer>
+  );
+};
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const { ['achapet.user']: user } = parseCookies(ctx);
@@ -50,4 +53,4 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   };
 };
 
-export default Login;
+export default Home;
