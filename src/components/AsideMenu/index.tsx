@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import * as S from './styles';
 
-import Doggo from '../../assets/doggo.svg';
+// import Doggo from '../../assets/doggo.svg';
 import { User } from '../../types';
 import useAuth from '../../hooks/useAuth';
 import { MdPersonOutline } from 'react-icons/md';
@@ -16,7 +16,7 @@ export const AsideMenu = ({ user }: AsideMenuProps) => {
   return (
     <S.Header>
       <S.LogoContainer>
-        <Doggo />
+        {/* <Doggo /> */}
         <S.Logo>AchaPet</S.Logo>
       </S.LogoContainer>
       <S.ContainerMenu>

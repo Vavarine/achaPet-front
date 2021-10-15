@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Doggo from '../../assets/doggo.svg';
+// import Doggo from '../../assets/doggo.svg';
 import * as S from './styles';
 
 export const ImageDescription = () => {
@@ -17,9 +17,7 @@ export const ImageDescription = () => {
               <S.MoreLink>Saiba mais sobre nós</S.MoreLink>
             </Link>
           </S.DescriptionWrapper>
-          <S.LogoSVGContainer>
-            <Doggo />
-          </S.LogoSVGContainer>
+          <S.LogoSVGContainer>{/* <Doggo /> */}</S.LogoSVGContainer>
         </S.ContainerDescrition>
       </S.Wrapper>
     </S.Container>
