@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import * as S from './styles';
 
 export const ImageDescription = () => {
@@ -11,7 +13,9 @@ export const ImageDescription = () => {
               Tornamos a procura do seu pet mais simples.
             </S.DescritionTitle>
             <S.Descrition>Seja ele perdido ou para ser seu</S.Descrition>
-            <S.MoreLink href="/login">Saiba mais sobre nós</S.MoreLink>
+            <Link href="/institutional">
+              <S.MoreLink>Saiba mais sobre nós</S.MoreLink>
+            </Link>
           </div>
           <S.LogoImage
             src="/assets/Logo.png"

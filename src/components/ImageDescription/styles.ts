@@ -76,9 +76,12 @@ export const Descrition = styled.p`
   }
 `;
 
-export const MoreLink = styled(Link)`
-  color: ${({ theme }) => theme.color.text};
+export const MoreLink = styled.a`
+  color: ${({ theme }) => theme.color.blue_darker};
   font-size: 1rem;
+  text-decoration: underline;
+
+  cursor: pointer;
 
   @media (max-width: 1024px) {
     display: none;
@@ -86,8 +89,8 @@ export const MoreLink = styled(Link)`
 `;
 
 export const LogoImage = styled.img`
-  min-width: 250px !important;
-  height: auto;
+  min-width: 250px;
+  height: 250px;
 
   @media (max-width: 1024px) {
     display: none;

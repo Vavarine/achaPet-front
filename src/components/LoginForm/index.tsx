@@ -1,22 +1,26 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
+import isEmail from 'validator/lib/isEmail';
 
 import useAuth from '../../hooks/useAuth';
 
 import * as S from './styles';
+import Link from 'next/link';
+import { colorShade } from '../../styles';
 
 const LoginForm = () => {
   const {
     register,
     setError,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm();
-  const { signInWithGoogle, signIn } = useAuth();
+  const { signInWithGoogle, login } = useAuth();
   const { rememberMe, setRememberMe } = useAuth();
 
   const router = useRouter();
@@ -35,8 +39,13 @@ const LoginForm = () => {
   async function onsubmit(data) {
     const { email, password } = data;
 
+    if (getUnvalidFields({ email, password }).length > 0) {
+      toast.error('Preencha todos os campos');
+      return;
+    }
+
     toast.promise(
-      signIn(email, password),
+      login(email, password),
       {
         loading: 'Um segundo...',
         success: data => {
@@ -56,11 +65,31 @@ const LoginForm = () => {
     );
   }
 
-  function validateEmail(email: HTMLInputElement) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  function getUnvalidFields(fields: {}) {
+    const unvalidFields = [];
 
-    var res = re.test(String(email.value).toLowerCase());
-    console.log('res :>> ', res);
+    console.log(fields);
+
+    Object.keys(currField => {
+      console.log(currField);
+
+      if (fields[currField] === '') {
+        console.log('invalid');
+        unvalidFields.push(currField);
+      }
+
+      if (currField === 'email' && !isEmail(fields[currField])) {
+        console.log('invalid email');
+        unvalidFields.push(currField);
+      }
+    });
+
+    return unvalidFields;
+  }
+
+  function validateEmail(email: HTMLInputElement) {
+    const res = isEmail(email.value);
+
     if (!res) {
       email.classList.add('error');
     } else {
@@ -70,10 +99,10 @@ const LoginForm = () => {
 
   return (
     <S.ContainerLogin>
-      <form onSubmit={handleSubmit(onsubmit)}>
+      <S.Form onSubmit={handleSubmit(onsubmit)}>
         <S.Title>Entrar</S.Title>
 
-        <S.LoginWithGoogle onClick={hanldeLoginWithGoogle}>
+        <S.LoginWithGoogle type="button" onClick={hanldeLoginWithGoogle}>
           <FcGoogle size={30} />
           Entra com google
         </S.LoginWithGoogle>
@@ -83,14 +112,14 @@ const LoginForm = () => {
         </S.lineOr>
 
         <S.LoginWithEmailAndPass>
-          <label htmlFor="email" {...register('email')}>
+          <label htmlFor="email" {...(register('email'), { required: true })}>
             E-mail
           </label>
           <input
             name="email"
             type="email"
             id="email"
-            {...register('email')}
+            {...(register('email'), { required: true })}
             onBlur={e => {
               console.log('e :>> ', validateEmail(e.target));
             }}
@@ -127,12 +156,14 @@ const LoginForm = () => {
             </button>
           </S.SubmitButton>
         </S.LoginWithEmailAndPass>
-      </form>
+      </S.Form>
 
       <S.DontHaveAccount>
         <span>
           Não tem uma conta?
-          <a href="#"> Cadastre-se</a>
+          <Link href="/sign-in">
+            <a>Cadastre-se</a>
+          </Link>
         </span>
       </S.DontHaveAccount>
     </S.ContainerLogin>

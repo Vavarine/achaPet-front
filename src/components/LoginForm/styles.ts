@@ -32,6 +32,12 @@ export const Title = styled.h3`
   margin-bottom: 60px;
 `;
 
+export const Form = styled.form`
+  &::-webkit-validation-bubble-message {
+    display: none;
+  }
+`;
+
 export const LoginWithGoogle = styled.button`
   position: relative;
   height: 43px;

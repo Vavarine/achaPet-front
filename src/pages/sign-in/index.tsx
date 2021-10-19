@@ -1,20 +1,32 @@
-import Head from 'next/head';
-import Link from 'next/link';
+import { GetServerSideProps } from 'next';
+import { parseCookies } from 'nookies';
+import { ImageDescription } from '../../components/ImageDescription';
+import RegisterForm from '../../components/SignInForm';
 
-import * as S from './styles';
+import * as S from '../login/styles';
 
-function SignIn() {
+export default function LoginScreen() {
   return (
-    <S.SignInContainer>
-      <Head>
-        <title>Login | AchaPet</title>
-      </Head>
-      <h1>Cadastro</h1>
-      <Link href="/">
-        <a>Logar-se</a>
-      </Link>
-    </S.SignInContainer>
+    <S.LoginContainer>
+      <ImageDescription />
+      <RegisterForm />
+    </S.LoginContainer>
   );
 }
 
-export default SignIn;
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const { ['achapet.user']: user } = parseCookies(ctx);
+
+  if (user) {
+    return {
+      redirect: {
+        destination: '/home',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};

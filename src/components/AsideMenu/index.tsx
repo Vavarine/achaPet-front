@@ -11,7 +11,7 @@ type AsideMenuProps = {
 };
 
 export const AsideMenu = ({ user }: AsideMenuProps) => {
-  const { signOut } = useAuth();
+  const { logOut } = useAuth();
 
   return (
     <S.Header>
@@ -20,7 +20,7 @@ export const AsideMenu = ({ user }: AsideMenuProps) => {
         <S.Logo>AchaPet</S.Logo>
       </S.LogoContainer>
       <S.ContainerMenu>
-        <MdPersonOutline size={20} />
+        <MdPersonOutline size={20} onClick={logOut} />
         {/* <p>Olá {user.name}</p>
         <button onClick={signOut}>Deslogar</button> */}
       </S.ContainerMenu>

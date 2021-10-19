@@ -13,16 +13,6 @@ interface HomeProps {
   user: User;
 }
 
-function Login({ user }: HomeProps) {
-  return (
-    <div>
-      <Head>
-        <title>AchaPet</title>
-      </Head>
-    </div>
-  );
-}
-
 export const Home = ({ user }: HomeProps) => {
   return (
     <S.HomeContainer>
