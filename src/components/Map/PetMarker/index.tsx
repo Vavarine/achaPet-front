@@ -11,10 +11,10 @@ interface PetMarkerProps {
 }
 
 const PetMarker = ({ pet }: PetMarkerProps) => {
-  const { latitude, longitude, imagens } = pet;
+  const { latitude, longitude, imagens, status } = pet;
   const position = [parseFloat(latitude), parseFloat(longitude)];
 
-  const mapIcon = getMapIcon();
+  const mapIcon = getMapIcon(imagens[0], status);
 
   useEffect(() => {
     console.log('petmarker', pet);
@@ -22,14 +22,14 @@ const PetMarker = ({ pet }: PetMarkerProps) => {
 
   return (
     <Marker position={[position[0], position[1]]} icon={mapIcon}>
-      <Popup
+      <S.PetCard
         closeButton={false}
         minWidth={240}
         maxWidth={240}
         className="map-popup"
       >
         Juquinha
-      </Popup>
+      </S.PetCard>
     </Marker>
   );
 };

@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
           animalTipo: null,
           raca: 'viralata',
           cor: 'preto',
-          status: 'achado',
+          status: 'perdido',
           caracteristicas: 'marelo',
           hora: '20:05:23',
           data: '2021-10-11',

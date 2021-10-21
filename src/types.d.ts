@@ -13,7 +13,7 @@ export interface Pet {
   email: string;
   nome: string;
   celular: string;
-  status: 'perdido' | 'achado';
+  status: 'perdido' | 'visto';
   nomeAnimal: string;
   animalTipo: null;
   raca: string;
