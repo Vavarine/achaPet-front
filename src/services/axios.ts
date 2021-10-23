@@ -16,11 +16,7 @@ export default function getApiClient(ctx?: any) {
   api.interceptors.request.use(config => {
     const { url, method, baseURL, data } = config;
 
-    console.log(`> [request] ${method} ${url}`);
-
-    if (data) {
-      console.log(`with data: `, data);
-    }
+    console.log(`> [request] ${method} ${url} with data: `, data);
 
     return config;
   });
@@ -38,11 +34,7 @@ export default function getApiClient(ctx?: any) {
       const { data } = error;
       const { method, url, baseURL } = error.config;
 
-      console.log(`> [response error] ${method} ${url}`);
-
-      if (data) {
-        console.log(`with data: `, data);
-      }
+      console.log(`> [response error] ${method} ${url} with data: `, data);
 
       return Promise.reject(error);
     },

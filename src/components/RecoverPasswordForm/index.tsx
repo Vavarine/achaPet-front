@@ -33,7 +33,7 @@ const LoginForm = () => {
     const { email, password } = data;
 
     toast.promise(
-      signIn(email, password),
+      login(email, password),
       {
         loading: 'Um segundo...',
         success: data => {

@@ -81,16 +81,6 @@ const LoginForm = () => {
     return unvalidFields;
   }
 
-  function validateEmail(email: HTMLInputElement) {
-    const res = isEmail(email.value);
-
-    if (!res) {
-      email.classList.add('error');
-    } else {
-      email.classList.remove('error');
-    }
-  }
-
   return (
     <S.ContainerLogin>
       <S.Form onSubmit={handleSubmit(onsubmit)}>
@@ -113,8 +103,9 @@ const LoginForm = () => {
             name="email"
             type="email"
             id="email"
-            {...(register('email'), { required: true })}
+            {...register('email')}
             onBlur={e => {}}
+            required
           ></input>
           <span className="errorMessage">Preecha o campo corretamente</span>
 
@@ -124,6 +115,7 @@ const LoginForm = () => {
             type="password"
             id="password"
             {...register('password')}
+            required
           ></input>
 
           <S.RememberMeAndResetPassword>
