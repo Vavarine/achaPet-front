@@ -17,8 +17,6 @@ const SignInForm = () => {
   async function onsubmit(data) {
     const { name, email, password } = data;
 
-    console.log(data);
-
     toast.promise(
       signIn(name, email, password),
       {
@@ -86,9 +84,6 @@ const SignInForm = () => {
             type="name"
             id="name"
             {...register('name')}
-            onChange={e => {
-              console.log('e :>> ', validateName(e.target));
-            }}
           ></input>
 
           <label htmlFor="email" {...register('email')}>
@@ -99,9 +94,6 @@ const SignInForm = () => {
             type="email"
             id="email"
             {...register('email')}
-            onBlur={e => {
-              console.log('e :>> ', validateEmail(e.target));
-            }}
           ></input>
           <span className="errorMessage">Preecha o campo corretamente</span>
 

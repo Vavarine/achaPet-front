@@ -27,8 +27,6 @@ const Map = ({ pets }: MapProps) => {
         setPosition([-13.8013697, -50.9061335]);
       },
     );
-
-    console.log('map', pets);
   }, []);
 
   return (

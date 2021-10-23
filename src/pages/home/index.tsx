@@ -9,6 +9,7 @@ const Map = dynamic(() => import('../../components/Map'), { ssr: false });
 
 import * as S from './styles';
 import { AsideMenu } from '../../components/AsideMenu';
+import getApiClient from '../../services/axios';
 
 interface HomeProps {
   user: User;
@@ -28,6 +29,9 @@ export const Home = ({ user, pets }: HomeProps) => {
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const { ['achapet.user']: user } = parseCookies(ctx);
+
+  const api = getApiClient(ctx);
+  const data = await api.get('/postsAnimals/list');
 
   if (!user) {
     return {
@@ -57,8 +61,14 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
           data: '2021-10-11',
           latitude: '-23.6854194',
           longitude: '-46.4609373',
-          imagens: [
-            'https://achapet.s3.amazonaws.com/76f60fc8ef51463aaf44d685fc89cfc0-Ursos.png',
+          fotos: [
+            {
+              idFoto: 1.0299708059312718,
+              nomeFoto: 'arvores.jpg',
+              tamanho: 345636,
+              key: '244bd2611ee8bf9240ee76dfdda88c3d-arvores.jpg',
+              url: 'https://achapet.s3.sa-east-1.amazonaws.com/244bd2611ee8bf9240ee76dfdda88c3d-arvores.jpg',
+            },
           ],
         },
       ],

@@ -46,13 +46,7 @@ export default function AuthContextProvider({
   }, []);
 
   useEffect(() => {
-    console.log(rememberMe);
-  }, [rememberMe]);
-
-  useEffect(() => {
     if (!user || !rememberMe) return;
-
-    console.log('useEffect user');
 
     setCookie(undefined, 'achapet.user', JSON.stringify(user), {
       maxAge: 60 * 60 * 24, // 1 day

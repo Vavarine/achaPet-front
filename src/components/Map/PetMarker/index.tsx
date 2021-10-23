@@ -11,24 +11,23 @@ interface PetMarkerProps {
 }
 
 const PetMarker = ({ pet }: PetMarkerProps) => {
-  const { latitude, longitude, imagens, status } = pet;
+  const { latitude, longitude, fotos, status, raca, nomeAnimal } = pet;
   const position = [parseFloat(latitude), parseFloat(longitude)];
 
-  const mapIcon = getMapIcon(imagens[0], status);
-
-  useEffect(() => {
-    console.log('petmarker', pet);
-  }, []);
+  const mapIcon = getMapIcon(fotos[0].url, status);
 
   return (
     <Marker position={[position[0], position[1]]} icon={mapIcon}>
       <S.PetCard
         closeButton={false}
-        minWidth={240}
-        maxWidth={240}
+        minWidth={140}
+        maxWidth={140}
         className="map-popup"
+        status={status}
       >
-        Juquinha
+        <p className="status">{status}</p>
+        <p className="name">{nomeAnimal}</p>
+        <p className="breed">({raca})</p>
       </S.PetCard>
     </Marker>
   );

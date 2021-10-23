@@ -68,18 +68,12 @@ const LoginForm = () => {
   function getUnvalidFields(fields: {}) {
     const unvalidFields = [];
 
-    console.log(fields);
-
     Object.keys(currField => {
-      console.log(currField);
-
       if (fields[currField] === '') {
-        console.log('invalid');
         unvalidFields.push(currField);
       }
 
       if (currField === 'email' && !isEmail(fields[currField])) {
-        console.log('invalid email');
         unvalidFields.push(currField);
       }
     });
@@ -120,9 +114,7 @@ const LoginForm = () => {
             type="email"
             id="email"
             {...(register('email'), { required: true })}
-            onBlur={e => {
-              console.log('e :>> ', validateEmail(e.target));
-            }}
+            onBlur={e => {}}
           ></input>
           <span className="errorMessage">Preecha o campo corretamente</span>
 

@@ -8,6 +8,13 @@ export interface User {
   name: string;
   email: string;
 }
+export interface Foto {
+  idFoto: number;
+  nomeFoto: string;
+  tamanho: number;
+  key: string;
+  url: string;
+}
 export interface Pet {
   id: number;
   email: string;
@@ -23,5 +30,5 @@ export interface Pet {
   data: string;
   latitude: string;
   longitude: string;
-  imagens: string[];
+  fotos: Foto[];
 }

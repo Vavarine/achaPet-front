@@ -13,7 +13,7 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { signInWithGoogle, signIn } = useAuth();
+  const { signInWithGoogle, login } = useAuth();
   //   const { acceptTerms, setAcceptTerms } = useState(false);
 
   const router = useRouter();
@@ -54,10 +54,10 @@ const LoginForm = () => {
   }
 
   function validateEmail(email: HTMLInputElement) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     var res = re.test(String(email.value).toLowerCase());
-    console.log('res :>> ', res);
     if (!res) {
       email.classList.add('error');
     } else {
@@ -79,9 +79,7 @@ const LoginForm = () => {
             type="email"
             id="email"
             {...register('email')}
-            onBlur={e => {
-              console.log('e :>> ', validateEmail(e.target));
-            }}
+            onBlur={e => {}}
           ></input>
           <span className="errorMessage">Esse não é um email valido</span>
 

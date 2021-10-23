@@ -1,8 +1,6 @@
 import { divIcon } from 'leaflet';
 
 const getMapIcon = (imageUrl: string, status: 'perdido' | 'visto') => {
-  console.log({ status });
-
   const styles = {
     span: `
       display: block;
@@ -14,17 +12,17 @@ const getMapIcon = (imageUrl: string, status: 'perdido' | 'visto') => {
           ? `background-color: #FFF5F5;`
           : `background-color: #FAFFF5;`
       }
-      border-radius: 10px;
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 3px 14px rgb(0 0 0 / 30%);
+      filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.5));
     `,
     image: `
       position: relative;
       height: 72px;
       width: 72px;
-      border-radius: 10px;
+      border-radius: 14px;
       object-fit: cover;
       z-index: 2;
     `,
@@ -40,11 +38,13 @@ const getMapIcon = (imageUrl: string, status: 'perdido' | 'visto') => {
     className: 'custom-pin',
     iconSize: [80, 80],
     iconAnchor: [29, 68],
-    popupAnchor: [200, 24],
+    popupAnchor: [status === 'perdido' ? 140 : -120, 24],
     html: `
           <span style="${styles.span}">
             <img src="${imageUrl}" style="${styles.image}"/>
-            <img src="/assets/point-left.png" style="${styles.tip}" />
+            <img src="/assets/point-${
+              status === 'perdido' ? `left` : `right`
+            }.png" style="${styles.tip}" />
           </span>
           `,
   });

@@ -5,21 +5,18 @@ export default function getApiClient(ctx?: any) {
   const { 'achapet.authToken': token } = parseCookies(ctx);
 
   const api = axios.create({
-    // baseURL: 'https://achapet.herokuapp.com',
     baseURL: 'https://achapet-backend.herokuapp.com',
   });
 
   api.interceptors.request.use(config => {
     const { url, method, baseURL } = config;
-    console.log(`> ${method} ${url}`);
-
     return config;
   });
 
   api.interceptors.request.use(config => {
     const { url, method, baseURL, data } = config;
 
-    console.log(`> [request] ${method} ${url} at ${baseURL}`);
+    console.log(`> [request] ${method} ${url}`);
 
     if (data) {
       console.log(`with data: `, data);
@@ -33,11 +30,7 @@ export default function getApiClient(ctx?: any) {
       const { data } = response;
       const { method, url, baseURL } = response.config;
 
-      console.log(`> [response] ${method} ${url} at ${baseURL}`);
-
-      if (data) {
-        console.log(`with data: `, data);
-      }
+      console.log(`> [response] ${method} ${url} with data: `, data);
 
       return response;
     },
@@ -45,7 +38,7 @@ export default function getApiClient(ctx?: any) {
       const { data } = error;
       const { method, url, baseURL } = error.config;
 
-      console.log(`> [response error] ${method} ${url} at ${baseURL}`);
+      console.log(`> [response error] ${method} ${url}`);
 
       if (data) {
         console.log(`with data: `, data);
@@ -56,7 +49,7 @@ export default function getApiClient(ctx?: any) {
   );
 
   if (token) {
-    api.defaults.headers.authorization = `Bearer ${token}`;
+    api.defaults.headers['x-access-token'] = token;
   }
 
   return api;
