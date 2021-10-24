@@ -9,6 +9,7 @@ import { theme } from '../../styles';
 import * as S from './styles';
 import { PetGallery } from './PetGallery';
 import { LocationInfo } from '../../types';
+import { RemovePet } from './RemovePet';
 
 export const PetModal = () => {
   const [petLocationInfo, setPetLocationInfo] = useState<LocationInfo>();
@@ -78,9 +79,10 @@ export const PetModal = () => {
           </div>
 
           <div className="buttonContainer">
-            {pet.email !== user.email ? (
+            {pet.email === user.email ? (
               <a
                 href={`https://api.whatsapp.com/send?phone=${pet.celular}&text=Ol%C3%A1%2C%20acho%20que%20vi%20seu%20pet!`}
+                target="_blank"
                 className="whatsapp"
               >
                 {pet.status === 'perdido'
@@ -88,7 +90,11 @@ export const PetModal = () => {
                   : 'Esse é o meu pet'}
               </a>
             ) : (
-              ''
+              <RemovePet
+                message={
+                  pet.status === 'perdido' ? 'Achei meu pet' : 'Remover pet'
+                }
+              />
             )}
           </div>
         </S.PetInfo>

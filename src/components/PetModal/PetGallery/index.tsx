@@ -1,3 +1,4 @@
+import { sendError } from 'next/dist/next-server/server/api-utils';
 import { useState } from 'react';
 
 import { Foto } from '../../../types';
@@ -14,7 +15,11 @@ export const PetGallery = ({ images, description }: PetGalleryProps) => {
   return (
     <S.Images>
       <div className="selectedImageContainer">
-        <img src={selectedImage.url} alt={description} />
+        {selectedImage ? (
+          <img src={selectedImage.url} alt={description} />
+        ) : (
+          <img src="/assets/petLogo.png" className="placeholder" />
+        )}
       </div>
 
       <div className="imagesToSelectContainer">

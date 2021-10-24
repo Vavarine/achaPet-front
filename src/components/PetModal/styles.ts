@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 import Modal from 'react-modal';
 
-import { customScrollbar, flexCenter, rem, theme } from '../../styles/index';
+import {
+  customScrollbar,
+  flexCenter,
+  rem,
+  theme,
+  colorShade,
+} from '../../styles/index';
 
 export const PetModal = styled(Modal)`
   position: absolute;
@@ -37,11 +43,13 @@ export const Images = styled.div`
 `;
 
 export const PetInfo = styled.div`
-  padding: 7px 30px 17px 10px;
+  padding: 7px 32px 17px 12px;
   display: flex;
   flex-direction: column;
 
   .infoHeader {
+    margin-bottom: 56px;
+
     display: flex;
     justify-content: space-between;
 
@@ -49,12 +57,19 @@ export const PetInfo = styled.div`
       font-weight: 300px;
 
       span {
+        display: block;
         line-height: 22px;
+        margin-bottom: 18px;
       }
 
       h1 {
         font-size: 24px;
         font-weight: bold;
+        margin-bottom: 4px;
+      }
+
+      p {
+        font-size: 16px;
       }
     }
 
@@ -66,11 +81,49 @@ export const PetInfo = styled.div`
         font-weight: bold;
         font-size: 20px;
         line-height: 22px;
+
+        margin-bottom: 20px;
       }
 
       p {
         display: flex;
         flex-direction: column;
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .description {
+    margin-bottom: auto;
+
+    h3 {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  }
+
+  .buttonContainer {
+    ${flexCenter()}
+
+    .whatsapp {
+      height: 48px;
+      padding-bottom: 3px;
+      width: 80%;
+
+      border-radius: 8px;
+      font-size: 18px;
+      color: white;
+      text-decoration: none;
+
+      background-color: #50acc3;
+      transform: translateX(10px);
+      transition: 0.2s;
+
+      ${flexCenter()}
+
+      :hover {
+        background-color: ${colorShade('#50ACC3', -10)};
       }
     }
   }

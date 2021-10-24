@@ -17,8 +17,9 @@ const PetMarker = ({ pet }: PetMarkerProps) => {
   const position = [parseFloat(latitude), parseFloat(longitude)];
 
   const { openModal } = usePetModal();
+  const iconUrl = fotos[0]?.url || '/assets/petLogo.png';
 
-  const mapIcon = getMapIcon(fotos[0].url, status);
+  const mapIcon = getMapIcon(iconUrl, status);
 
   return (
     <Marker position={[position[0], position[1]]} icon={mapIcon}>

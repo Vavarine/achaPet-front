@@ -6,11 +6,22 @@ export const Images = styled.div`
   padding: 3px;
 
   .selectedImageContainer {
+    ${flexCenter()}
+    border-radius: 8px;
+    width: 276px;
+    height: 240px;
+    overflow: hidden;
+    background: linear-gradient(129.16deg, #dddddd 0.65%, #eaeaea 104.09%);
+
     img {
-      width: 276px;
-      height: 240px;
-      border-radius: 8px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+
+      &.placeholder {
+        height: 60px;
+        width: 60px;
+      }
     }
   }
 
