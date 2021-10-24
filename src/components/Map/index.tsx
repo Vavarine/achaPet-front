@@ -37,6 +37,7 @@ const Map = ({ pets }: MapProps) => {
           zoom={hasUserLocation ? 16 : 5}
           scrollWheelZoom={true}
           style={{ height: '100%', width: '100%' }}
+          zoomControl={false}
         >
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

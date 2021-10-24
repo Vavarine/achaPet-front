@@ -13,6 +13,10 @@ export const PetCard = styled(Popup)<PetCardProps>`
   height: 80px;
   border-radius: 18px;
 
+  & > div {
+    cursor: pointer;
+  }
+
   .leaflet-popup-content-wrapper {
     background-color: ${props => {
       return props.status === 'perdido' ? '#FFF5F5' : '#FAFFF5';

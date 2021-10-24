@@ -48,4 +48,16 @@ export const GlobalStyle = createGlobalStyle`
     button {
         cursor: pointer;
     }
+
+    .ReactModal__Overlay {
+      width: calc(100vw - 80px);
+      right: 0px !important;
+
+      background-color: rgba(73, 73, 73, .2) !important;
+      backdrop-filter: blur(10px) !important;
+
+      transform: translateX(80px);
+
+      z-index: 999;
+    }
 `;
