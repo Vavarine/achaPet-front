@@ -10,7 +10,6 @@ const Map = dynamic(() => import('../../components/Map'), { ssr: false });
 import * as S from './styles';
 import { AsideMenu } from '../../components/AsideMenu';
 import getApiClient from '../../services/axios';
-
 interface HomeProps {
   user: User;
   pets: Pet[];

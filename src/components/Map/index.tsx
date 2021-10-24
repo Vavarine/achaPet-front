@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import {
+  MapContainer,
+  Marker,
+  Popup,
+  TileLayer,
+  useMapEvents,
+} from 'react-leaflet';
 
 import PetMarker from './PetMarker';
 
 import 'leaflet/dist/leaflet.css';
 import { Pet } from '../../types';
-
+import { ModalPet } from '../../components/index';
 interface MapProps {
   pets: Pet[];
 }
@@ -29,6 +35,30 @@ const Map = ({ pets }: MapProps) => {
     );
   }, []);
 
+  function LocationMarker() {
+    const [clickPosition, setClickPosition] = useState(null);
+    const [params, setParams] = useState(null);
+    const map = useMapEvents({
+      click() {
+        map.locate();
+      },
+      locationfound(e) {
+        setParams(e.latlng);
+        console.log('e :>> ', e);
+        setClickPosition(e.latlng);
+        map.flyTo(e.latlng, map.getZoom());
+      },
+    });
+
+    console.log('param :>> ', params);
+
+    return clickPosition === null ? null : (
+      <Marker position={clickPosition}>
+        <ModalPet latlng={params}></ModalPet>;
+      </Marker>
+    );
+  }
+
   return (
     <>
       {position ? (
@@ -45,6 +75,7 @@ const Map = ({ pets }: MapProps) => {
           {pets.map(pet => (
             <PetMarker key={pet.id} pet={pet} />
           ))}
+          <LocationMarker />
         </MapContainer>
       ) : (
         ''

@@ -7,5 +7,6 @@ export * from './LoginForm';
 export * from './MadeByCard';
 export * from './RecoverPasswordForm';
 export * from './SignInForm';
+export * from './ShowPetModal';
 export * from './Title';
 export * from './WhatPeopleSayCard';
