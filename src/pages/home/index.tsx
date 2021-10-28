@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
+import Modal from 'react-modal';
 import Head from 'next/head';
 import { parseCookies } from 'nookies';
+
+import usePetModal from '../../hooks/usePetModal';
 import { Pet, User } from '../../types';
 
 const Map = dynamic(() => import('../../components/Map'), { ssr: false });
@@ -10,17 +13,21 @@ const Map = dynamic(() => import('../../components/Map'), { ssr: false });
 import * as S from './styles';
 import { AsideMenu } from '../../components/AsideMenu';
 import getApiClient from '../../services/axios';
+import { PetModal } from '../../components/PetModal';
 interface HomeProps {
   user: User;
   pets: Pet[];
 }
 
 export const Home = ({ user, pets }: HomeProps) => {
+  const { isOpen } = usePetModal();
+
   return (
     <S.HomeContainer>
       <AsideMenu user={user} />
       <div>
-        <Map pets={pets} />
+        <Map pets={pets} user={user} />
+        <PetModal />
       </div>
     </S.HomeContainer>
   );
@@ -31,6 +38,8 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 
   const api = getApiClient(ctx);
   const data = await api.get('/postsAnimals/list');
+
+  console.log(process.env.MAPS_API_KEY);
 
   if (!user) {
     return {
@@ -67,6 +76,20 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
               tamanho: 345636,
               key: '244bd2611ee8bf9240ee76dfdda88c3d-arvores.jpg',
               url: 'https://achapet.s3.sa-east-1.amazonaws.com/244bd2611ee8bf9240ee76dfdda88c3d-arvores.jpg',
+            },
+            {
+              idFoto: 1.0299708059312719,
+              nomeFoto: 'arvoresa.jpg',
+              tamanho: 345636,
+              key: '244bd2611ee8bf9240ee76dfdda88c3dw-arvores.jpg',
+              url: 'https://www.dicaspetz.com.br/wp-content/uploads/2020/01/vira-lata-caramelo.jpg',
+            },
+            {
+              idFoto: 1.0299708059312701,
+              nomeFoto: 'arvorese.jpg',
+              tamanho: 345634,
+              key: '244bd2611ee8bf9240ee76dfdda88c3dw-arvores.jpg',
+              url: 'https://www.dicaspetz.com.br/wp-content/uploads/2020/01/vira-lata-caramelo-cao.jpg',
             },
           ],
         },

@@ -14,9 +14,14 @@ import { Pet } from '../../types';
 import { ModalPet } from '../../components/index';
 interface MapProps {
   pets: Pet[];
+  user: User;
+}
+interface User {
+  name: string;
+  email: string;
 }
 
-const Map = ({ pets }: MapProps) => {
+const Map = ({ pets, user }: MapProps) => {
   const [position, setPosition] = useState<number[]>();
   const [hasUserLocation, setHasUserLocation] = useState<boolean>(false);
 
@@ -44,17 +49,19 @@ const Map = ({ pets }: MapProps) => {
       },
       locationfound(e) {
         setParams(e.latlng);
-        console.log('e :>> ', e);
         setClickPosition(e.latlng);
-        map.flyTo(e.latlng, map.getZoom());
       },
     });
 
-    console.log('param :>> ', params);
-
     return clickPosition === null ? null : (
       <Marker position={clickPosition}>
-        <ModalPet latlng={params}></ModalPet>;
+        <ModalPet
+          latlng={params}
+          clearPosition={() => {
+            setClickPosition(null);
+          }}
+          user={user}
+        ></ModalPet>
       </Marker>
     );
   }
@@ -67,6 +74,7 @@ const Map = ({ pets }: MapProps) => {
           zoom={hasUserLocation ? 16 : 5}
           scrollWheelZoom={true}
           style={{ height: '100%', width: '100%' }}
+          zoomControl={false}
         >
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

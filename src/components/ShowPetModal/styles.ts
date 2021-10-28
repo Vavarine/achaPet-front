@@ -1,19 +1,28 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Modal from 'react-modal';
 
 import { flexCenter, rem, theme } from '../../styles/index';
 
-export const ModalContainer = styled(Modal)`
+export const ModalContainer = styled(Modal)<{ isThird: boolean }>`
   z-index: 10000;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   width: 100%;
   height: 100vh;
 
   max-width: 306px;
   max-height: 582px;
+
+  transition-duration: 300ms;
+  ${props =>
+    props.isThird &&
+    css`
+      max-width: 615px;
+      max-height: 309px;
+    `}
 
   background: #f9f9f9;
   border-radius: 10px;
@@ -45,7 +54,11 @@ export const ButtonClose = styled.button`
   padding: 10px;
 `;
 
-export const ContainerLostorFind = styled.div``;
+export const ContainerLostorFind = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const SubTitle = styled.h5`
   font-size: ${rem(12)};
@@ -158,6 +171,7 @@ export const NextPage = styled.div`
   justify-content: space-between;
 
   margin: 20px 0;
+  width: 100%;
 `;
 
 export const ProgressContainer = styled.div`
@@ -193,4 +207,81 @@ export const buttonNext = styled.button`
   border: 0;
   color: ${theme.color.white};
   height: 27px;
+`;
+
+export const buttonStepBack = styled.button`
+  background: transparent;
+  border-radius: 8px;
+  border: 0;
+  color: ${theme.color.red};
+  height: 27px;
+`;
+
+export const ContainerImages = styled.div``;
+export const MainImage = styled.div``;
+export const ThumbsImage = styled.div``;
+export const FormConfirm = styled.div``;
+export const LostOrFind = styled.div``;
+export const TextLostorFind = styled.div``;
+export const City = styled.div``;
+export const NameAndStreet = styled.div``;
+export const Name = styled.div``;
+export const Street = styled.div``;
+export const Step3 = styled.section`
+  ${flexCenter()};
+  justify-content: space-between;
+`;
+export const ContainerConfirmation = styled.section`
+  ${flexCenter()};
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: 60%;
+`;
+
+export const Informations = styled.div`
+  ${flexCenter()};
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+`;
+export const Span = styled.div``;
+export const SpanLostFind = styled.span`
+  font-weight: 300;
+  font-size: ${rem(10)};
+`;
+export const SpanCity = styled.span`
+  font-weight: 500;
+  font-size: ${rem(14)};
+`;
+export const SpanName = styled.span`
+  font-weight: 500;
+  font-size: ${rem(16)};
+`;
+
+export const SpanStreet = styled.span`
+  font-weight: 300;
+  font-size: ${rem(12)};
+
+  max-width: 120px;
+`;
+export const Description = styled.div``;
+export const DescriptionTitle = styled.h5`
+  font-weight: 300;
+  font-size: ${rem(12)};
+
+  margin-bottom: 5px;
+`;
+
+export const TextArea = styled.textarea`
+  border: 1px solid ${theme.color.border_input};
+  width: 100%;
+
+  border-radius: 8px;
+
+  padding: 0 10px 0 15px;
+
+  box-sizing: border-box;
+
+  outline: ${theme.color.border_input};
 `;

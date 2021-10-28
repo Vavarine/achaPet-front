@@ -7,7 +7,7 @@ const api = axios.create({
 api.interceptors.request.use(config => {
   const { url, method, baseURL, data } = config;
 
-  console.log(`> [request] ${method} ${url} with data: `, data);
+  console.log(`> [request] ${method} ${url}`);
 
   return config;
 });
@@ -17,7 +17,7 @@ api.interceptors.response.use(
     const { data } = response;
     const { method, url, baseURL } = response.config;
 
-    console.log(`> [response] ${method} ${url} with data: `, data);
+    console.log(`> [response] ${method} ${url}`);
 
     return response;
   },
@@ -25,7 +25,7 @@ api.interceptors.response.use(
     const { data } = error;
     const { method, url, baseURL } = error.config;
 
-    console.log(`> [response error] ${method} ${url} with data: `, data);
+    console.log(`> [response error] ${method} ${url}`);
 
     return Promise.reject(error);
   },
