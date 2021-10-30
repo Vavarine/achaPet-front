@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Header, MadeByCard, WhatPeopleSayCard } from '../../components/index';
 // import { Header } from '../../components';
-import * as S from './styles';
+import * as S from '../../styles/pages/landing/styles';
 
 const LandingPage = () => {
   const [isBrowser, setIsBrowser] = useState(false);

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Modal from 'react-modal';
 
-import { customScrollbar, flexCenter, rem, theme } from '../../styles/index';
+import { customScrollbar, flexCenter, rem, theme } from '../../index';
 
 export const HomeContainer = styled.div`
   min-height: 100vh;

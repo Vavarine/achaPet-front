@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { customScrollbar, flexCenter, rem, theme } from '../../styles/index';
+import { customScrollbar, flexCenter, rem, theme } from '../../index';
 
 export const InstitutionalContainer = styled.div`
   min-height: 100vh;

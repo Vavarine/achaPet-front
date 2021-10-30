@@ -188,6 +188,8 @@ export const DontHaveAccount = styled.div`
   }
 
   a {
+    display: inline-block;
+    margin-left: 5px;
     color: ${({ theme }) => theme.color.blue_500};
   }
 `;

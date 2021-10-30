@@ -13,7 +13,7 @@ export const ImageDescription = () => {
               Tornamos a procura do seu pet mais simples.
             </S.DescritionTitle>
             <S.Descrition>Seja ele perdido ou para ser seu</S.Descrition>
-            <Link href="/institutional">
+            <Link href="/institutional/quem-somos">
               <S.MoreLink>Saiba mais sobre nós</S.MoreLink>
             </Link>
           </div>

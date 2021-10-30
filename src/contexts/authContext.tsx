@@ -46,11 +46,17 @@ export default function AuthContextProvider({
   }, []);
 
   useEffect(() => {
-    if (!user || !rememberMe) return;
+    if (!user) return;
 
-    setCookie(undefined, 'achapet.user', JSON.stringify(user), {
-      maxAge: 60 * 60 * 24, // 1 day
-    });
+    if (rememberMe) {
+      setCookie(undefined, 'achapet.user', JSON.stringify(user), {
+        maxAge: 60 * 60 * 24, // 1 day
+      });
+
+      return;
+    }
+
+    setCookie(undefined, 'achapet.user', JSON.stringify(user));
   }, [user]);
 
   async function signInWithGoogle() {
@@ -100,9 +106,15 @@ export default function AuthContextProvider({
         email: email,
       });
 
-      setCookie(undefined, 'achapet.authToken', token, {
-        maxAge: 60 * 60 * 24, // 1 day
-      });
+      if (rememberMe) {
+        setCookie(undefined, 'achapet.authToken', token, {
+          maxAge: 60 * 60 * 24, // 1 day
+        });
+
+        return;
+      }
+
+      setCookie(undefined, 'achapet.authToken', token);
 
       return;
     }
@@ -117,7 +129,6 @@ export default function AuthContextProvider({
     destroyCookie(null, 'achapet.user');
 
     toast('Até mais...', { icon: '😢' });
-
     router.push('/login');
   }
 

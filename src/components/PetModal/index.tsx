@@ -38,7 +38,7 @@ export const PetModal = () => {
     console.log(petLocationInfo);
   }, [petLocationInfo]);
 
-  if (pet) {
+  if (pet && user) {
     return (
       <S.PetModal isOpen={isOpen}>
         <PetGallery images={pet.fotos} description={pet.caracteristicas} />
@@ -50,7 +50,7 @@ export const PetModal = () => {
 
           <div className="infoHeader">
             <div className="petInfo">
-              <span>{pet.status}</span>
+              <span>{pet.status || 'perdido'}</span>
               <h1>{pet.nomeAnimal}</h1>
               <p>
                 ({pet.raca} / {pet.cor})
@@ -79,7 +79,7 @@ export const PetModal = () => {
           </div>
 
           <div className="buttonContainer">
-            {pet.email === user.email ? (
+            {pet.email !== user.email ? (
               <a
                 href={`https://api.whatsapp.com/send?phone=${pet.celular}&text=Ol%C3%A1%2C%20acho%20que%20vi%20seu%20pet!`}
                 target="_blank"

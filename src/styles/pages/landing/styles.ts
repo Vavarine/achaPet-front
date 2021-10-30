@@ -5,7 +5,7 @@ import {
   rem,
   theme,
   containerCenter,
-} from '../../styles/index';
+} from '../../index';
 
 export const Container = styled.article`
   ${containerCenter()};

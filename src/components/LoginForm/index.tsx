@@ -11,6 +11,7 @@ import useAuth from '../../hooks/useAuth';
 import * as S from './styles';
 import Link from 'next/link';
 import { colorShade } from '../../styles';
+import getUnvalidFields from '../../utils/getUnvalidFields';
 
 const LoginForm = () => {
   const {
@@ -44,6 +45,8 @@ const LoginForm = () => {
       return;
     }
 
+    console.log({ email, password });
+
     toast.promise(
       login(email, password),
       {
@@ -63,22 +66,6 @@ const LoginForm = () => {
         },
       },
     );
-  }
-
-  function getUnvalidFields(fields: {}) {
-    const unvalidFields = [];
-
-    Object.keys(currField => {
-      if (fields[currField] === '') {
-        unvalidFields.push(currField);
-      }
-
-      if (currField === 'email' && !isEmail(fields[currField])) {
-        unvalidFields.push(currField);
-      }
-    });
-
-    return unvalidFields;
   }
 
   return (
