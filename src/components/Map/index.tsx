@@ -4,6 +4,8 @@ import {
   Marker,
   Popup,
   TileLayer,
+  useMap,
+  useMapEvent,
   useMapEvents,
 } from 'react-leaflet';
 
@@ -12,6 +14,7 @@ import PetMarker from './PetMarker';
 import 'leaflet/dist/leaflet.css';
 import { Pet } from '../../types';
 import { ModalPet } from '../../components/index';
+import { LatLngExpression } from 'leaflet';
 interface MapProps {
   pets: Pet[];
   user: User;
@@ -22,7 +25,7 @@ interface User {
 }
 
 const Map = ({ pets, user }: MapProps) => {
-  const [position, setPosition] = useState<number[]>();
+  const [position, setPosition] = useState<LatLngExpression>();
   const [hasUserLocation, setHasUserLocation] = useState<boolean>(false);
 
   useEffect(() => {
@@ -40,41 +43,16 @@ const Map = ({ pets, user }: MapProps) => {
     );
   }, []);
 
-  function LocationMarker() {
-    const [clickPosition, setClickPosition] = useState(null);
-    const [params, setParams] = useState(null);
-    const map = useMapEvents({
-      click() {
-        map.locate();
-      },
-      locationfound(e) {
-        setParams(e.latlng);
-        setClickPosition(e.latlng);
-      },
-    });
-
-    return clickPosition === null ? null : (
-      <Marker position={clickPosition}>
-        <ModalPet
-          latlng={params}
-          clearPosition={() => {
-            setClickPosition(null);
-          }}
-          user={user}
-        ></ModalPet>
-      </Marker>
-    );
-  }
-
   return (
     <>
       {position ? (
         <MapContainer
-          center={[position[0], position[1]]}
+          center={position}
           zoom={hasUserLocation ? 16 : 5}
           scrollWheelZoom={true}
           style={{ height: '100%', width: '100%' }}
           zoomControl={false}
+          onClick={console.log}
         >
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -83,7 +61,7 @@ const Map = ({ pets, user }: MapProps) => {
           {pets.map(pet => (
             <PetMarker key={pet.id} pet={pet} />
           ))}
-          <LocationMarker />
+          <LocationMarker user={user} />
         </MapContainer>
       ) : (
         ''
@@ -92,4 +70,26 @@ const Map = ({ pets, user }: MapProps) => {
   );
 };
 
+function LocationMarker({ user }: { user: User }) {
+  const [clickPosition, setClickPosition] = useState(null);
+  const [params, setParams] = useState(null);
+
+  const map = useMapEvent('click', event => {
+    setParams(event.latlng);
+    setClickPosition(event.latlng);
+    console.log('event :>> ', event);
+  });
+
+  return clickPosition === null ? null : (
+    <Marker position={clickPosition}>
+      <ModalPet
+        latlng={params}
+        clearPosition={() => {
+          setClickPosition(null);
+        }}
+        user={user}
+      ></ModalPet>
+    </Marker>
+  );
+}
 export default Map;

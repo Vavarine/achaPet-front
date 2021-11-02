@@ -13,6 +13,8 @@ import { auth, firebase } from '../services/firebase';
 import api from '../services/api';
 import { User } from '../types';
 import { useRouter } from 'next/router';
+import axios from 'axios';
+import { dispatchTokenState } from '../states/token';
 
 interface AuthContextType {
   user: User;
@@ -42,7 +44,8 @@ export default function AuthContextProvider({
 
     if (!user) return;
 
-    setUser(JSON.parse(user));
+    const parsedUser = JSON.parse(user);
+    setUser(parsedUser);
   }, []);
 
   useEffect(() => {
@@ -66,9 +69,12 @@ export default function AuthContextProvider({
         email,
       });
 
+      dispatchTokenState(data.token);
+
       setUser({
         name: data.user.nome,
         email: data.user.email,
+        token: data.token,
       });
 
       if (rememberMe) {
@@ -99,6 +105,8 @@ export default function AuthContextProvider({
         name: nome,
         email: email,
       });
+
+      dispatchTokenState(token);
 
       setCookie(undefined, 'achapet.authToken', token, {
         maxAge: 60 * 60 * 24, // 1 day

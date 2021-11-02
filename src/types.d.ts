@@ -7,6 +7,7 @@ export interface InstitutionalContent {
 export interface User {
   name: string;
   email: string;
+  token?: string;
 }
 export interface Foto {
   idFoto: number;

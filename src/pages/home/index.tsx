@@ -1,19 +1,16 @@
-import { useState, useEffect } from 'react';
+import useReState from '@raulpesilva/re-state/dist';
 import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
-import Modal from 'react-modal';
-import Head from 'next/head';
 import { parseCookies } from 'nookies';
-
+import { AsideMenu } from '../../components/AsideMenu';
+import { PetModal } from '../../components/PetModal';
 import usePetModal from '../../hooks/usePetModal';
+import getApiClient from '../../services/axios';
 import { Pet, User } from '../../types';
+import * as S from './styles';
 
 const Map = dynamic(() => import('../../components/Map'), { ssr: false });
 
-import * as S from './styles';
-import { AsideMenu } from '../../components/AsideMenu';
-import getApiClient from '../../services/axios';
-import { PetModal } from '../../components/PetModal';
 interface HomeProps {
   user: User;
   pets: Pet[];

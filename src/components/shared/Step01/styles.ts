@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import Modal from 'react-modal';
-
-import { flexCenter, rem, theme } from '../../styles/index';
+import { flexCenter, rem, theme } from '../../../styles';
 
 export const ModalContainer = styled(Modal)<{ isThird: boolean }>`
   z-index: 10000;
