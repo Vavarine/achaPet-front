@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Header, MadeByCard, WhatPeopleSayCard } from '../../components/index';
+import {
+  Header,
+  Footer,
+  MadeByCard,
+  WhatPeopleSayCard,
+} from '../../components/index';
 // import { Header } from '../../components';
 import * as S from './styles';
+import Slider from 'react-slick';
 
 const LandingPage = () => {
   const [isBrowser, setIsBrowser] = useState(false);
@@ -12,6 +18,10 @@ const LandingPage = () => {
   if (!isBrowser) {
     return null;
   }
+  const settings = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
     <S.Container>
@@ -92,55 +102,59 @@ const LandingPage = () => {
           </h2>
 
           <S.MadeByWrapper>
-            <MadeByCard
-              name="Amanda"
-              photo="/assets/photo-itau.png"
-              networks={{
-                linkedin: 'teste',
-                github: 'teste',
-                instagram: 'teste',
-              }}
-            ></MadeByCard>
-            <MadeByCard
-              name="Eduardo"
-              photo="/assets/photo-du.png"
-              networks={{
-                linkedin: 'teste',
-                github: 'teste',
-                instagram: 'teste',
-              }}
-            ></MadeByCard>
-            <MadeByCard
-              name="Evailson"
-              photo="/assets/photo-eva.png"
-              networks={{
-                linkedin: 'teste',
-                github: 'teste',
-                instagram: 'teste',
-              }}
-            ></MadeByCard>
-            <MadeByCard
-              name="Karina"
-              photo="/assets/photo-ana-paula.png"
-              networks={{
-                linkedin: 'teste',
-                github: 'teste',
-                instagram: 'teste',
-              }}
-            ></MadeByCard>
-
-            <MadeByCard
-              name="Lindomar"
-              photo="/assets/photo-sid.jpg"
-              networks={{
-                linkedin: 'teste',
-                github: 'teste',
-                instagram: 'teste',
-              }}
-            ></MadeByCard>
+            <Slider {...settings}>
+              <MadeByCard
+                name="Amanda"
+                photo="/assets/photo-itau.png"
+                networks={{
+                  linkedin:
+                    'https://www.linkedin.com/in/amanda-pereira-020baa180/',
+                  github: 'https://github.com/pereiraamanda',
+                  instagram: 'https://www.instagram.com/jpereira_amanda/',
+                }}
+              ></MadeByCard>
+              <MadeByCard
+                name="Eduardo"
+                photo="/assets/photo-du.png"
+                networks={{
+                  linkedin:
+                    'https://www.linkedin.com/in/eduardo-josé-sianga-98535b1b5/',
+                  github: 'https://github.com/Sianga',
+                  instagram: 'https://www.instagram.com/du_sianga/?hl=pt-br',
+                }}
+              ></MadeByCard>
+              <MadeByCard
+                name="Evailson"
+                photo="/assets/photo-eva.png"
+                networks={{
+                  linkedin: 'teste',
+                  github: 'teste',
+                  instagram: 'teste',
+                }}
+              ></MadeByCard>
+              <MadeByCard
+                name="Karina"
+                photo="/assets/photo-ana-paula.png"
+                networks={{
+                  linkedin: 'https://www.linkedin.com/in/dev-karinacorrotti/',
+                  github: 'https://github.com/KarinaCorrotti/',
+                  instagram: 'https://www.instagram.com/kakinhacurrotti',
+                }}
+              ></MadeByCard>
+              <MadeByCard
+                name="Lindomar"
+                photo="/assets/photo-sid.jpg"
+                networks={{
+                  linkedin: 'teste',
+                  github: 'teste',
+                  instagram: 'teste',
+                }}
+              ></MadeByCard>
+            </Slider>
           </S.MadeByWrapper>
         </S.MadeBy>
       </main>
+      <Footer />
     </S.Container>
   );
 };

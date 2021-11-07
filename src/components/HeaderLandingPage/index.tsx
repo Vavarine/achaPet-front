@@ -9,10 +9,10 @@ export const Header = () => {
         <img src="/assets/petLogo.png" alt="Logo" />
       </S.LinkHome>
       <S.LinksNavigation>
-        <a href="/">Adoção</a>
-        <a href="/">Depoimentos</a>
+        <S.LinkDepartment href="/">Adoção</S.LinkDepartment>
+        <S.LinkDepartment href="/">Depoimentos</S.LinkDepartment>
         <Link href="login">
-          <a href="/">Começar</a>
+          <S.LinkDepartment href="/">Começar</S.LinkDepartment>
         </Link>
       </S.LinksNavigation>
     </S.ContainerHeader>

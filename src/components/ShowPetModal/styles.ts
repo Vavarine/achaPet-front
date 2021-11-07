@@ -3,7 +3,10 @@ import Modal from 'react-modal';
 
 import { flexCenter, rem, theme } from '../../styles/index';
 
-export const ModalContainer = styled(Modal)<{ isThird: boolean }>`
+export const ModalContainer = styled(Modal)<{
+  isThird: boolean;
+  isFourth: boolean;
+}>`
   z-index: 10000;
   position: fixed;
   top: 50%;
@@ -22,7 +25,19 @@ export const ModalContainer = styled(Modal)<{ isThird: boolean }>`
     css`
       max-width: 615px;
       max-height: 309px;
-    `}
+
+      @media (max-width: 650px) {
+        max-height: 70vh;
+        max-width: 80%;
+      }
+    `};
+
+  ${props =>
+    props.isFourth &&
+    css`
+      max-width: 300px;
+      max-height: 300px;
+    `};
 
   background: #f9f9f9;
   border-radius: 10px;
@@ -34,6 +49,10 @@ export const ModalContainer = styled(Modal)<{ isThird: boolean }>`
   ${flexCenter()};
   justify-content: space-between;
   flex-direction: column;
+
+  > div {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h2`
@@ -218,8 +237,6 @@ export const buttonStepBack = styled.button`
 `;
 
 export const ContainerImages = styled.div``;
-export const MainImage = styled.div``;
-export const ThumbsImage = styled.div``;
 export const FormConfirm = styled.div``;
 export const LostOrFind = styled.div``;
 export const TextLostorFind = styled.div``;

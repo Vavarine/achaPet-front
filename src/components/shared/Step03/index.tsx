@@ -1,6 +1,7 @@
 import useReState from '@raulpesilva/re-state/dist';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { GrFormClose } from 'react-icons/gr';
+import { MdAddCircleOutline } from 'react-icons/md';
 import { StepWizardChildrenProps } from '../..';
 import api, { formDataApi } from '../../../services/api';
 import { User } from '../../../types';
@@ -19,42 +20,75 @@ export const Step3 = (props: StepWizardStep3ChildrenProps) => {
   const [street] = useReState('streetClickMap', null);
   const [city] = useReState('cityClickMap', null);
   const [, setDescription] = useReState('descriptionAnimal', '');
-  const [files, SetFiles] = useState(null);
+  const [filesUploads, setFilesUploads] = useReState('filesUpload', []);
 
-  const sendFiles = event => {
+  const fileInput = useRef<HTMLInputElement>(null);
+
+  const sendFiles = async event => {
     console.log('event :>> ', event);
     const file = event.target.files[0];
-    const id = 1.1845587846844856;
-    const email = 'linndomarnascimento17@gmail.com';
-    const tipoPost = 'perdidos';
     const formData = new FormData();
 
-    console.log('file :>> ', file);
     formData.append('file', file, file.name);
-    formData.append('id', `${id}`);
-    formData.append('email', `${email}`);
-    formData.append('tipoPost', 'perdidos');
 
-    formDataApi
-      .put('/postsAnimals/fotoPostsAnimals', formData, {
-        headers: {
-          accept: 'application/json',
-        },
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error.response);
-      });
+    const response = await formDataApi.post(
+      '/postsAnimals/fotoPostsAnimals',
+      formData,
+    );
+
+    if (response.status !== 200)
+      return alert('algo deu errado, tente novamente mais tarde :(');
+
+    console.log('response :>> ', response.data);
+
+    setFilesUploads(ant => [...ant, response.data]);
+  };
+
+  console.log('returnFilesPost :>> ', filesUploads.join());
+
+  const sendImage = event => {
+    if (filesUploads.length > 3) return;
+    console.log('event :>> ', event);
+    fileInput.current.click();
   };
 
   return (
     <S.Step3>
       <S.ButtonClose onClick={props.closeModal} />
       <S.ContainerImages>
-        <img src="/assets/first-thumb.png"></img>
-        <input type="file" onChange={sendFiles} />
+        <S.ImageMain
+          onClick={event => {
+            sendImage(event);
+          }}
+        >
+          {filesUploads.length != 0 && filesUploads[0] !== null ? (
+            <img src={filesUploads[filesUploads.length - 1]}></img>
+          ) : (
+            <MdAddCircleOutline size={40} />
+          )}
+        </S.ImageMain>
+        <S.ImageThumbs>
+          {filesUploads.length > 0 &&
+            filesUploads.slice(0, -1).map((file, index) => {
+              return <img key={file} src={file}></img>;
+            })}
+
+          {filesUploads.length < 3 && (
+            <S.ImageThumbsDiv
+              onClick={event => {
+                sendImage(event);
+              }}
+            >
+              <MdAddCircleOutline size={20} />
+            </S.ImageThumbsDiv>
+          )}
+        </S.ImageThumbs>
+        <input
+          type="file"
+          onChange={sendFiles}
+          ref={fileInput}
+          style={{ display: 'none' }}
+        />
       </S.ContainerImages>
       <S.ContainerConfirmation>
         <S.Title>Por fim...</S.Title>

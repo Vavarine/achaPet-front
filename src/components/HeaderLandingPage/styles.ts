@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { rem, flexCenter } from '../../styles/index';
+import { rem, flexCenter, theme } from '../../styles/index';
 
 export const ContainerHeader = styled.header`
   color: ${({ theme }) => theme.color.link};
@@ -32,31 +32,31 @@ export const LinkHome = styled.a`
 export const LinksNavigation = styled.nav`
   ${flexCenter()}
   font-size: ${rem(24)};
+`;
 
-  a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.color.link};
+export const LinkDepartment = styled.a`
+  text-decoration: none;
+  color: ${({ theme }) => theme.color.link};
+  font-family: ${theme.font.main};
+  margin-right: 50px;
+  padding: 10px;
+  border-radius: 5px;
 
-    margin-right: 50px;
-    padding: 10px;
-    border-radius: 5px;
+  transition-duration: 300ms;
 
-    transition-duration: 300ms;
+  &:hover {
+    color: ${({ theme }) => theme.color.blue_500};
+  }
+
+  &:last-child {
+    margin: 0;
+    background: ${({ theme }) => theme.color.blue_500};
+    color: #fff;
+    text-transform: uppercase;
+    transition-duration: 500ms;
 
     &:hover {
-      color: ${({ theme }) => theme.color.blue_500};
-    }
-
-    &:last-child {
-      margin: 0;
-      background: ${({ theme }) => theme.color.blue_500};
-      color: #fff;
-      text-transform: uppercase;
-      transition-duration: 500ms;
-
-      &:hover {
-        background: ${({ theme }) => theme.color.blue_darker};
-      }
+      background: ${({ theme }) => theme.color.blue_darker};
     }
   }
 `;

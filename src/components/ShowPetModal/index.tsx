@@ -7,6 +7,7 @@ import { User } from '../../types';
 import { Step1 } from '../shared/Step01';
 import { Step2 } from '../shared/Step02';
 import { Step3 } from '../shared/Step03';
+import { StepSucess } from '../shared/StepSucess';
 import * as S from './styles';
 
 Modal.setAppElement('#root');
@@ -45,8 +46,7 @@ export const ModalPet = ({
   const [street, setStreet] = useReState('streetClickMap', null);
   const [city, setCity] = useReState('cityClickMap', null);
   const [state, setState] = useReState('stateClickMap', null);
-  const [isFirst, setIsFirst] = useState(false);
-  const [isThird, setIsThird] = useState(false);
+  const [currentStep, setCurrentStep] = useReState('currentStepWizard', null);
 
   Geocode.setApiKey(process.env.NEXT_PUBLIC_MAPS_API_KEY);
   Geocode.setLanguage('pt-BR');
@@ -102,6 +102,7 @@ export const ModalPet = ({
   };
   useEffect(() => {
     requestCEP();
+    setCurrentStep(1);
   }, []);
 
   function closeModal() {
@@ -110,11 +111,9 @@ export const ModalPet = ({
   }
 
   const handleStepChange = ({ previousStep, activeStep }: stepWizardProps) => {
-    if (activeStep === 1) setIsFirst(true);
-    if (activeStep !== 1) setIsFirst(false);
+    console.log('activeStep :>> ', activeStep);
 
-    if (activeStep === 3) setIsThird(true);
-    if (activeStep !== 3) setIsThird(false);
+    setCurrentStep(activeStep);
   };
 
   return (
@@ -122,18 +121,32 @@ export const ModalPet = ({
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
       contentLabel="Modal"
-      isThird={isThird}
+      isThird={currentStep === 3}
+      isFourth={currentStep === 4}
     >
       <StepWizard onStepChange={handleStepChange}>
-        <Step1 closeModal={closeModal} isFirst={isFirst} isThird={isThird} />
-        <Step2 closeModal={closeModal} isFirst={isFirst} isThird={isThird} />
+        <Step1
+          closeModal={closeModal}
+          isFirst={currentStep === 1}
+          isThird={currentStep === 3}
+        />
+        <Step2
+          closeModal={closeModal}
+          isFirst={currentStep === 1}
+          isThird={currentStep === 3}
+        />
         <Step3
-          isFirst={isFirst}
-          isThird={isThird}
+          isFirst={currentStep === 1}
+          isThird={currentStep === 3}
           closeModal={closeModal}
           latitude={latitude}
           longitude={longitude}
           user={user}
+        />
+        <StepSucess
+          closeModal={closeModal}
+          isFirst={currentStep === 1}
+          isThird={currentStep === 3}
         />
       </StepWizard>
     </S.ModalContainer>

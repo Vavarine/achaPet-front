@@ -25,9 +25,20 @@ export const ContainerBackground = styled.section`
 export const MainBanner = styled.section`
   ${flexCenter()};
   justify-content: space-between;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 
 export const TextContainerMainBanner = styled.div`
+  @media (max-width: 1024px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
   h2 {
     ${flexCenter()};
     justify-content: flex-start;
@@ -116,6 +127,11 @@ export const AdoptContainer = styled.section`
   background-repeat: no-repeat;
   background-color: ${theme.color.background};
 
+  @media (max-width: 1024px) {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
   h2 {
     font-size: ${rem(48)};
     font-weight: bold;
@@ -156,9 +172,20 @@ export const AdoptContainer = styled.section`
 `;
 export const AdoptContainerText = styled.section`
   width: 60%;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 export const AdoptContainerImg = styled.section`
   width: 40%;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 export const WhatPeopleSay = styled.section`
@@ -205,4 +232,6 @@ export const MadeByWrapper = styled.div`
 
   ${flexCenter()};
   flex-wrap: wrap;
+
+  overflow: hidden;
 `;

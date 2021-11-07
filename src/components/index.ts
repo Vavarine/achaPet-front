@@ -1,5 +1,6 @@
 export * from './AsideMenu';
 export * from './CartPet';
+export * from './FooterLandingPage';
 export * from './HeaderLandingPage';
 export * from './InputForm';
 export * from './InstitutionalMenu';
